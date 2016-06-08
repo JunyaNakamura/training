@@ -1,4 +1,4 @@
-package jp.genuine.training.scheduler.sample;
+package jp.genuine.training.scheduler.model.sample;
 
 public interface SampleRepository {
 
