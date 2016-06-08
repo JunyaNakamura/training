@@ -1,27 +1,49 @@
 package jp.genuine.training.scheduler.model.user;
 
 public class User {
-	private String value;
+	private String userId;
+	private String name;
+	private String password;
 
 	public User() {
-		value = "";
+		userId = "";
+		name = "";
+		password = "";
 	}
 
-	public User(String value) {
-		this.value = value;
+	public User(String userId,String name,String password) {
+		this.userId = userId;
+		this.name = name;
+		this.password = password;
 	}
 
-	public String getValue() {
-		return value;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("User [value=%s]", value);
+		return String.format("User [userId=%s, name=%s, password=%s]", userId, name, password);
 	}
 
 }
