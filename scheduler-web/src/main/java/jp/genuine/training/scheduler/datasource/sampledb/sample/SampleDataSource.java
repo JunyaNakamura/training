@@ -3,7 +3,7 @@ package jp.genuine.training.scheduler.datasource.sampledb.sample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import jp.genuine.training.scheduler.sample.SampleRepository;
+import jp.genuine.training.scheduler.model.sample.SampleRepository;
 
 @Repository
 public class SampleDataSource implements SampleRepository
