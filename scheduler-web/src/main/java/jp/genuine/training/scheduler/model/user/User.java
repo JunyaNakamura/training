@@ -1,43 +1,43 @@
 package jp.genuine.training.scheduler.model.user;
 
 public class User {
-	private String userId;
-	private String name;
-	private String password;
+	private UserId userId;
+	private Name name;
+	private Password password;
 
 	public User() {
-		userId = "";
-		name = "";
-		password = "";
+		userId = new UserId();
+		name = new Name();
+		password = new Password();
 	}
 
-	public User(String userId,String name,String password) {
+	public User(UserId userId, Name name, Password password) {
 		this.userId = userId;
 		this.name = name;
 		this.password = password;
 	}
 
-	public String getUserId() {
+	public UserId getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getName() {
+	public Name getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPassword() {
+	public Password getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setUserId(UserId userId) {
+		this.userId = userId;
+	}
+
+	public void setName(Name name) {
+		this.name = name;
+	}
+
+	public void setPassword(Password password) {
 		this.password = password;
 	}
 
