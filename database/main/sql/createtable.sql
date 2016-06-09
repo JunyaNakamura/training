@@ -1,7 +1,9 @@
 
 CREATE SCHEMA account;
 
-CREATE SCHEMA calender;
+CREATE SCHEMA performance;
+
+CREATE SCHEMA schedule;
 
 CREATE TABLE account.user
 (
@@ -12,7 +14,7 @@ CREATE TABLE account.user
  PRIMARY KEY(id)
 );
 
-CREATE TABLE calender.performance
+CREATE TABLE performance.information
 (
  id integer NOT NULL,
  user_id character varying(16) NOT NULL,
@@ -28,17 +30,17 @@ CREATE TABLE calender.performance
  FOREIGN KEY (user_id) REFERENCES account.user (id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE calender.holiday
+CREATE TABLE performance.holiday
 (
  id integer NOT NULL,
  performance_id integer NOT NULL,
  holiday_date date NOT NULL,
  created_at timestamp NOT NULL default now(),
  PRIMARY KEY (id),
- FOREIGN KEY (performance_id) REFERENCES calender.performance (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+ FOREIGN KEY (performance_id) REFERENCES performance.information (id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE calender.schedule
+CREATE TABLE schedule.information
 (
  id integer NOT NULL,
  performance_id integer NOT NULL,
@@ -51,10 +53,10 @@ CREATE TABLE calender.schedule
  implession text NOT NULL,
  updated_at timestamp NOT NULL default now(),
  PRIMARY KEY (id),
- FOREIGN KEY (performance_id) REFERENCES calender.performance (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+ FOREIGN KEY (performance_id) REFERENCES performance.information (id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE calender.tentative_schedule
+CREATE TABLE schedule.tentative_schedule
 (
  schedule_id integer NOT NULL,
  created_at timestamp NOT NULL default now(),
