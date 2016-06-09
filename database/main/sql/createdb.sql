@@ -1,1 +1,1 @@
-CREATE DATABASE live OWNER owner_scheduler;
+CREATE DATABASE scheduler OWNER owner_scheduler;
