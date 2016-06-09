@@ -1,9 +1,10 @@
-CREATE USER owner_scheduler WITH LOGIN PASSWORD 'owner_scheduler#1';
-CREATE DATABASE live;
+CREATE DATABASE live OWNER owner_scheduler;
+
+CREATE SCHEMA user;
 
 CREATE SCHEMA calender;
 
-CREATE TABLE calender.user
+CREATE TABLE user.information
 (
  id character varying(16) NOT NULL,
  password character varying(16) NOT NULL,
@@ -25,7 +26,7 @@ CREATE TABLE calender.performance
  memo text NOT NULL,
  updated_at timestamp NOT NULL default now(),
  PRIMARY KEY (id),
- FOREIGN KEY (user_id) REFERENCES calender.user (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+ FOREIGN KEY (user_id) REFERENCES user.information (id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE calender.holiday
