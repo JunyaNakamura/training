@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jp.genuine.training.scheduler.datasource.sampledb.user.UserMapper">
+
+	<resultMap type="jp.genuine.training.scheduler.model.user.User" id="user">
+		<id column="" property="userId.value"/>
+		<result column="" property="name.value"/>
+		<result column="" property="password.value"/>
+	</resultMap>
+
+	<select id="findBy" resultMap="user" flushCache="true">
+		SELECT
+			"Sample" ;
+	</select>
+
+</mapper>
