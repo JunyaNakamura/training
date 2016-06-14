@@ -1,0 +1,83 @@
+package jp.genuine.training.scheduler.model.performance;
+
+import jp.genuine.training.scheduler.model.user.UserId;
+
+public class Performance {
+	private UserId userId;
+	private PerformanceName performanceName;
+	private PerformanceId performanceId;
+	private PerformanceUrl performanceUrl;
+	private Memo memo;
+	private Venue venue;
+	private PerformanceDate performanceDate;
+
+	public Performance() {
+		userId = new UserId();
+		performanceName = new PerformanceName();
+		performanceId = new PerformanceId();
+		performanceUrl = new PerformanceUrl();
+		memo = new Memo();
+		venue = new Venue();
+		performanceDate = new PerformanceDate();
+	}
+	public Performance(UserId userId, PerformanceName performanceName, PerformanceId performanceId,
+			PerformanceUrl performanceUrl, Memo memo, Venue venue, PerformanceDate performanceDate) {
+		this.userId = userId;
+		this.performanceName = performanceName;
+		this.performanceId = performanceId;
+		this.performanceUrl = performanceUrl;
+		this.memo = memo;
+		this.venue = venue;
+		this.performanceDate = performanceDate;
+	}
+	public UserId getUserId() {
+		return userId;
+	}
+	public PerformanceName getPerformanceName() {
+		return performanceName;
+	}
+	public PerformanceId getPerformanceId() {
+		return performanceId;
+	}
+	public PerformanceUrl getPerformanceUrl() {
+		return performanceUrl;
+	}
+	public Memo getMemo() {
+		return memo;
+	}
+	public Venue getVenue() {
+		return venue;
+	}
+	public PerformanceDate getPerformanceDate() {
+		return performanceDate;
+	}
+	public void setUserId(UserId userId) {
+		this.userId = userId;
+	}
+	public void setPerformanceName(PerformanceName performanceName) {
+		this.performanceName = performanceName;
+	}
+	public void setPerformanceId(PerformanceId performanceId) {
+		this.performanceId = performanceId;
+	}
+	public void setPerformanceUrl(PerformanceUrl performanceUrl) {
+		this.performanceUrl = performanceUrl;
+	}
+	public void setMemo(Memo memo) {
+		this.memo = memo;
+	}
+	public void setVenue(Venue venue) {
+		this.venue = venue;
+	}
+	public void setPerformanceDate(PerformanceDate performanceDate) {
+		this.performanceDate = performanceDate;
+	}
+	@Override
+	public String toString() {
+		return String.format(
+				"Performance [userId=%s, performanceName=%s, performanceId=%s, performanceUrl=%s, memo=%s, venue=%s, performanceDate=%s]",
+				userId, performanceName, performanceId, performanceUrl, memo, venue, performanceDate);
+	}
+
+
+}
