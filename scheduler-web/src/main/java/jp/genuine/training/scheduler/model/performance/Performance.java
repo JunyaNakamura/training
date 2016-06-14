@@ -1,8 +1,11 @@
 package jp.genuine.training.scheduler.model.performance;
 
+import java.io.Serializable;
+
 import jp.genuine.training.scheduler.model.user.UserId;
 
-public class Performance {
+public class Performance implements Serializable{
+
 	private UserId userId;
 	private PerformanceName performanceName;
 	private PerformanceId performanceId;
@@ -79,5 +82,6 @@ public class Performance {
 				userId, performanceName, performanceId, performanceUrl, memo, venue, performanceDate);
 	}
 
+	private static final long serialVersionUID = 4733370403718151062L;
 
 }

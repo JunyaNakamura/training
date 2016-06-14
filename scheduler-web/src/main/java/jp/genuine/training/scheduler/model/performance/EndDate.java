@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.performance;
 
-public class EndDate {
+import java.io.Serializable;
+
+public class EndDate implements Serializable{
+
 	private String value;
 
 	public EndDate() {
@@ -24,4 +27,5 @@ public class EndDate {
 		return String.format("EndDate [value=%s]", value);
 	}
 
+	private static final long serialVersionUID = -99796780262669284L;
 }

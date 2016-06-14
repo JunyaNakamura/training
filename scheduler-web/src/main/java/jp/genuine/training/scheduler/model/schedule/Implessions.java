@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-public class Implessions {
+import java.io.Serializable;
+
+public class Implessions implements Serializable{
+
 	private String value;
 
 	public Implessions() {
@@ -23,6 +26,6 @@ public class Implessions {
 	public String toString() {
 		return String.format("Implessions [value=%s]", value);
 	}
-
+	private static final long serialVersionUID = 6967269752538677743L;
 
 }

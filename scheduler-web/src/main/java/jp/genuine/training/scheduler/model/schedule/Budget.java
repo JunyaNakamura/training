@@ -1,10 +1,12 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-public class Budget {
+import java.io.Serializable;
+
+public class Budget implements Serializable{
+
 	private Integer value;
 
 	public Budget() {
-		value = new Integer(0);
 	}
 
 	public Budget(Integer value) {
@@ -23,5 +25,6 @@ public class Budget {
 	public String toString() {
 		return String.format("Budget [value=%s]", value);
 	}
+	private static final long serialVersionUID = 1020787878998492689L;
 
 }

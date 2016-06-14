@@ -1,9 +1,11 @@
 package jp.genuine.training.scheduler.model.performance;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PerformanceOverviewList {
+public class PerformanceOverviewList implements Serializable{
+
 	private List<PerformanceOverview> list;
 
 	public PerformanceOverviewList() {
@@ -27,5 +29,6 @@ public class PerformanceOverviewList {
 		return String.format("PerformanceOverviewList [list=%s]", list);
 	}
 
+	private static final long serialVersionUID = 6757393832044083861L;
 
 }

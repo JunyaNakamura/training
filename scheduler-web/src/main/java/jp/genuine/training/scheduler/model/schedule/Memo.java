@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-public class Memo {
+import java.io.Serializable;
+
+public class Memo implements Serializable{
+
 	private String value;
 
 	public Memo() {
@@ -23,6 +26,6 @@ public class Memo {
 	public String toString() {
 		return String.format("Memo [value=%s]", value);
 	}
-
+	private static final long serialVersionUID = -5649122141679981018L;
 
 }

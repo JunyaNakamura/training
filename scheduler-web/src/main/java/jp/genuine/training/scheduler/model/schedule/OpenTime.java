@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-public class OpenTime {
+import java.io.Serializable;
+
+public class OpenTime implements Serializable{
+
 	private String value;
 
 	public OpenTime() {
@@ -23,6 +26,6 @@ public class OpenTime {
 	public String toString() {
 		return String.format("OpenTime [value=%s]", value);
 	}
-
+	private static final long serialVersionUID = -8974100009122064978L;
 
 }

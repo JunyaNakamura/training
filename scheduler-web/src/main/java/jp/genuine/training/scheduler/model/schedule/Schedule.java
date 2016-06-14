@@ -1,14 +1,12 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.io.Serializable;
 
 import jp.genuine.training.scheduler.model.performance.PerformanceId;
 
-public class Schedule {
-	private LocalDate fix;
-	private LocalTime open;
-	private LocalTime start;
+public class Schedule implements Serializable{
+
+
 	private PerformanceId performanceId;
 	private ScheduleId scheduleId;
 	private ScheduledDate scheduledDate;
@@ -16,12 +14,11 @@ public class Schedule {
 	private TicketPrice ticketPrice;
 	private Memo memo;
 	private TentativeSchedule tentativeSchedule;
+	private OpenTime openTime;
+	private StartTime startTime;
 	private Implessions implessions;
 
 	public Schedule() {
-		fix = LocalDate.now();
-		open = LocalTime.of(0, 0);
-		start = LocalTime.of(0, 0);
 		performanceId = new PerformanceId();
 		scheduleId = new ScheduleId();
 		scheduledDate = new ScheduledDate();
@@ -29,15 +26,14 @@ public class Schedule {
 		ticketPrice = new TicketPrice();
 		memo = new Memo();
 		tentativeSchedule = new TentativeSchedule();
+		openTime = new OpenTime();
+		startTime = new StartTime();
 		implessions = new Implessions();
 	}
 
-	public Schedule(LocalDate fix, LocalTime open, LocalTime start, PerformanceId performanceId, ScheduleId scheduleId,
-			ScheduledDate scheduledDate, Budget budget, TicketPrice ticketPrice, Memo memo,
-			TentativeSchedule tentativeSchedule, Implessions implessions) {
-		this.fix = fix;
-		this.open = open;
-		this.start = start;
+	public Schedule(PerformanceId performanceId, ScheduleId scheduleId, ScheduledDate scheduledDate, Budget budget,
+			TicketPrice ticketPrice, Memo memo, TentativeSchedule tentativeSchedule, OpenTime openTime,
+			StartTime startTime, Implessions implessions) {
 		this.performanceId = performanceId;
 		this.scheduleId = scheduleId;
 		this.scheduledDate = scheduledDate;
@@ -45,19 +41,9 @@ public class Schedule {
 		this.ticketPrice = ticketPrice;
 		this.memo = memo;
 		this.tentativeSchedule = tentativeSchedule;
+		this.openTime = openTime;
+		this.startTime = startTime;
 		this.implessions = implessions;
-	}
-
-	public LocalDate getFix() {
-		return fix;
-	}
-
-	public LocalTime getOpen() {
-		return open;
-	}
-
-	public LocalTime getStart() {
-		return start;
 	}
 
 	public PerformanceId getPerformanceId() {
@@ -88,20 +74,16 @@ public class Schedule {
 		return tentativeSchedule;
 	}
 
+	public OpenTime getOpenTime() {
+		return openTime;
+	}
+
+	public StartTime getStartTime() {
+		return startTime;
+	}
+
 	public Implessions getImplessions() {
 		return implessions;
-	}
-
-	public void setFix(LocalDate fix) {
-		this.fix = fix;
-	}
-
-	public void setOpen(LocalTime open) {
-		this.open = open;
-	}
-
-	public void setStart(LocalTime start) {
-		this.start = start;
 	}
 
 	public void setPerformanceId(PerformanceId performanceId) {
@@ -132,6 +114,14 @@ public class Schedule {
 		this.tentativeSchedule = tentativeSchedule;
 	}
 
+	public void setOpenTime(OpenTime openTime) {
+		this.openTime = openTime;
+	}
+
+	public void setStartTime(StartTime startTime) {
+		this.startTime = startTime;
+	}
+
 	public void setImplessions(Implessions implessions) {
 		this.implessions = implessions;
 	}
@@ -139,10 +129,10 @@ public class Schedule {
 	@Override
 	public String toString() {
 		return String.format(
-				"Schedule [fix=%s, open=%s, start=%s, performanceId=%s, scheduleId=%s, scheduledDate=%s, budget=%s, ticketPrice=%s, memo=%s, tentativeSchedule=%s, implessions=%s]",
-				fix, open, start, performanceId, scheduleId, scheduledDate, budget, ticketPrice, memo,
-				tentativeSchedule, implessions);
+				"Schedule [performanceId=%s, scheduleId=%s, scheduledDate=%s, budget=%s, ticketPrice=%s, memo=%s, tentativeSchedule=%s, openTime=%s, startTime=%s, implessions=%s]",
+				performanceId, scheduleId, scheduledDate, budget, ticketPrice, memo, tentativeSchedule, openTime,
+				startTime, implessions);
 	}
-
+	private static final long serialVersionUID = -546319281156951601L;
 
 }

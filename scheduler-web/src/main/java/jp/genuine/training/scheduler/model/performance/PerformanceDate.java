@@ -1,8 +1,10 @@
 package jp.genuine.training.scheduler.model.performance;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class PerformanceDate {
+public class PerformanceDate implements Serializable{
+
 	private LocalDate start;
 	private LocalDate end;
 	private SuspendDateList suspendDateList;
@@ -39,5 +41,7 @@ public class PerformanceDate {
 	public String toString() {
 		return String.format("PerformanceDate [start=%s, end=%s, suspendDateList=%s]", start, end, suspendDateList);
 	}
+
+	private static final long serialVersionUID = -5421923250629226084L;
 
 }

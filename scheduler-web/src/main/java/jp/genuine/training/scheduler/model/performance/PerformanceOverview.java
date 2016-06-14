@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.performance;
 
-public class PerformanceOverview {
+import java.io.Serializable;
+
+public class PerformanceOverview implements Serializable{
+
 	private PerformanceName performanceName;
 	private StartDate startDate;
 	private EndDate endDate;
@@ -39,5 +42,6 @@ public class PerformanceOverview {
 				startDate, endDate);
 	}
 
+	private static final long serialVersionUID = -350230872925231014L;
 
 }

@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-public class ScheduledDate {
+import java.io.Serializable;
+
+public class ScheduledDate implements Serializable{
+
 	private String value;
 
 	public ScheduledDate() {
@@ -24,4 +27,5 @@ public class ScheduledDate {
 		return String.format("ScheduledDate [value=%s]", value);
 	}
 
+	private static final long serialVersionUID = -3084058618511974392L;
 }

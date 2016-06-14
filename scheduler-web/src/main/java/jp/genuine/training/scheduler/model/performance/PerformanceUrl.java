@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.performance;
 
-public class PerformanceUrl {
+import java.io.Serializable;
+
+public class PerformanceUrl implements Serializable{
+
 	private String value;
 
 	public PerformanceUrl() {
@@ -24,4 +27,5 @@ public class PerformanceUrl {
 		return String.format("PerformanceUrl [value=%s]", value);
 	}
 
+	private static final long serialVersionUID = 7439625526288908300L;
 }

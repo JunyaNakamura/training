@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.performance;
 
-public class Venue {
+import java.io.Serializable;
+
+public class Venue implements Serializable{
+
 	private VenueName venueName;
 	private VenueUrl venueUrl;
 
@@ -35,4 +38,5 @@ public class Venue {
 		return String.format("Venue [venueName=%s, venueUrl=%s]", venueName, venueUrl);
 	}
 
+	private static final long serialVersionUID = 3724410208237033729L;
 }

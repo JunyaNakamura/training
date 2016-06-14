@@ -1,10 +1,12 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-public class TicketPrice {
+import java.io.Serializable;
+
+public class TicketPrice implements Serializable{
+
 	private Integer value;
 
 	public TicketPrice() {
-		value = new Integer(0);
 	}
 
 	public TicketPrice(Integer value) {
@@ -23,6 +25,6 @@ public class TicketPrice {
 	public String toString() {
 		return String.format("TicketPrice [value=%s]", value);
 	}
-
+	private static final long serialVersionUID = 9095861961665964422L;
 
 }

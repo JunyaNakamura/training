@@ -1,10 +1,12 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-public class ScheduleId {
+import java.io.Serializable;
+
+public class ScheduleId implements Serializable{
+
 	private Integer value;
 
 	public ScheduleId() {
-		value = new Integer(0);
 	}
 
 	public ScheduleId(Integer value) {
@@ -23,6 +25,6 @@ public class ScheduleId {
 	public String toString() {
 		return String.format("ScheduleId [value=%s]", value);
 	}
-
+	private static final long serialVersionUID = 2997842391829052923L;
 
 }

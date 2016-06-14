@@ -1,10 +1,12 @@
 package jp.genuine.training.scheduler.model.performance;
 
-public class PerformanceId {
+import java.io.Serializable;
+
+public class PerformanceId implements Serializable{
+
 	private Integer value;
 
 	public PerformanceId() {
-		value = new Integer(0);
 	}
 
 	public PerformanceId(Integer value) {
@@ -24,4 +26,5 @@ public class PerformanceId {
 		return String.format("PerformanceId [value=%s]", value);
 	}
 
+	private static final long serialVersionUID = 3423943690265249702L;
 }

@@ -1,28 +1,37 @@
 package jp.genuine.training.scheduler.model.schedule;
 
-public class TentativeSchedule {
-	private ScheduleId scheduleId;
+import java.io.Serializable;
+
+public class TentativeSchedule implements Serializable{
+
+	private boolean tentative;
 
 	public TentativeSchedule() {
-		scheduleId = new ScheduleId();
+		tentative = false;
 	}
 
-	public TentativeSchedule(ScheduleId scheduleId) {
-		this.scheduleId = scheduleId;
+
+	public TentativeSchedule(boolean tentative) {
+		this.tentative = tentative;
 	}
 
-	public ScheduleId getScheduleId() {
-		return scheduleId;
+
+	public boolean isTentative() {
+		return tentative;
 	}
 
-	public void setScheduleId(ScheduleId scheduleId) {
-		this.scheduleId = scheduleId;
+
+	public void setTentative(boolean tentative) {
+		this.tentative = tentative;
 	}
+
 
 	@Override
 	public String toString() {
-		return String.format("TentativeSchedule [scheduleId=%s]", scheduleId);
+		return String.format("TentativeSchedule [tentative=%s]", tentative);
 	}
 
+
+	private static final long serialVersionUID = 9066996265746265469L;
 
 }
