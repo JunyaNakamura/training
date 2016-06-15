@@ -1,0 +1,1 @@
+CREATE USER owner_scheduler WITH LOGIN PASSWORD 'owner_scheduler#1';
