@@ -5,41 +5,38 @@ import java.io.Serializable;
 public class PerformanceOverview implements Serializable{
 
 	private PerformanceName performanceName;
-	private StartDate startDate;
-	private EndDate endDate;
+	private PerformanceDateRange performanceDateRange;
 
 	public PerformanceOverview() {
 		performanceName = new PerformanceName();
-		startDate = new StartDate();
-		endDate = new EndDate();
+		performanceDateRange = new PerformanceDateRange();
 	}
-	public PerformanceOverview(PerformanceName performanceName, StartDate startDate, EndDate endDate) {
+
+	public PerformanceOverview(PerformanceName performanceName, PerformanceDateRange performanceDateRange) {
 		this.performanceName = performanceName;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.performanceDateRange = performanceDateRange;
 	}
+
 	public PerformanceName getPerformanceName() {
 		return performanceName;
 	}
-	public StartDate getStartDate() {
-		return startDate;
+
+	public PerformanceDateRange getPerformanceDateRange() {
+		return performanceDateRange;
 	}
-	public EndDate getEndDate() {
-		return endDate;
-	}
+
 	public void setPerformanceName(PerformanceName performanceName) {
 		this.performanceName = performanceName;
 	}
-	public void setStartDate(StartDate startDate) {
-		this.startDate = startDate;
+
+	public void setPerformanceDateRange(PerformanceDateRange performanceDateRange) {
+		this.performanceDateRange = performanceDateRange;
 	}
-	public void setEndDate(EndDate endDate) {
-		this.endDate = endDate;
-	}
+
 	@Override
 	public String toString() {
-		return String.format("PerformanceOverview [performanceName=%s, startDate=%s, endDate=%s]", performanceName,
-				startDate, endDate);
+		return String.format("PerformanceOverview [performanceName=%s, performanceDateRange=%s]", performanceName,
+				performanceDateRange);
 	}
 
 	private static final long serialVersionUID = -350230872925231014L;
