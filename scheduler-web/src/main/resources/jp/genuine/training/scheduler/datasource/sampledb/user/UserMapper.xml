@@ -3,14 +3,20 @@
 <mapper namespace="jp.genuine.training.scheduler.datasource.sampledb.user.UserMapper">
 
 	<resultMap type="jp.genuine.training.scheduler.model.user.User" id="user">
-		<id column="" property="userId.value"/>
-		<result column="" property="name.value"/>
-		<result column="" property="password.value"/>
+		<id column="id" property="userId.value"/>
+		<result column="name" property="name.value"/>
+		<result column="password" property="password.value"/>
 	</resultMap>
 
 	<select id="findBy" resultMap="user" flushCache="true">
 		SELECT
-			"Sample" ;
+			"user".id,
+			"user".password,
+			"user".name
+		FROM
+			account."user"
+		WHERE
+			"user".id = #{userId.value};
 	</select>
 
 </mapper>
