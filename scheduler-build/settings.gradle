@@ -1,3 +1,4 @@
 rootProject.name = 'scheduler'
 
 includeFlat 'scheduler-web'
+includeFlat 'test-util'
