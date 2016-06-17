@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import jp.genuine.training.scheduler.model.performance.PerformanceOverview;
 import jp.genuine.training.scheduler.model.performance.PerformanceOverviewList;
-import jp.genuine.training.scheduler.model.performance.PerformanceRepository;
+import jp.genuine.training.scheduler.model.performance.PerformanceOverviewRepository;
 import jp.genuine.training.scheduler.model.user.User;
 @Repository
-public class PerformanceDataSource implements PerformanceRepository{
+public class PerformanceOverviewListDataSource implements PerformanceOverviewRepository{
 	@Autowired
-	private PerformanceMapper performanceMapper;
+	private PerformanceOverviewListMapper performanceMapper;
 
 	@Override
 	public PerformanceOverviewList listOf(User user) {

@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Param;
 import jp.genuine.training.scheduler.model.performance.PerformanceOverview;
 import jp.genuine.training.scheduler.model.user.User;
 
-public interface PerformanceMapper {
+public interface PerformanceOverviewListMapper {
 	List<PerformanceOverview> listOf(@Param("user") User user);
 }

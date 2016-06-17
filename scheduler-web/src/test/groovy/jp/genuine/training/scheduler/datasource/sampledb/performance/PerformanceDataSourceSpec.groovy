@@ -27,7 +27,7 @@ import spock.lang.Unroll
 public class PerformanceDataSourceSpec extends Specification
 {
 	@Autowired
-    PerformanceDataSource performanceDataSource;
+    PerformanceOverviewListDataSource performanceDataSource;
 
 	@Autowired
     @Qualifier("sampleDBDataSource")
