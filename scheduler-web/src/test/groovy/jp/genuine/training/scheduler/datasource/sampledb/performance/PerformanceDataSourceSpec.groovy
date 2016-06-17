@@ -55,6 +55,7 @@ public class PerformanceDataSourceSpec extends Specification
 	@Unroll
     def "<#TEST_NAME>find:データの取得->#TITLE"(){
         given:
+			def formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd",Locale.JAPAN )
 			def userId = new UserId( USER_ID )
 			def userName = new Name( USER_NAME )
 			def userPass = new Password( USER_PASS )
@@ -62,7 +63,6 @@ public class PerformanceDataSourceSpec extends Specification
 
 		expect:
 		def resultPerformanceList = performanceDataSource.listOf( user )
-		def formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd",Locale.JAPAN )
 			resultPerformanceList.list.size() == 3
 			resultPerformanceList.list[INDEX].performanceId.value == PERFORMANCE_ID
 			resultPerformanceList.list[INDEX].performanceName.value == PERFORMANCE_NAME
