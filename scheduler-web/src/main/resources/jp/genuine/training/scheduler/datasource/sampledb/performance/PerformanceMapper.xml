@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jp.genuine.training.scheduler.datasource.sampledb.performance.PerformanceMapper">
+
+	<resultMap type="jp.genuine.training.scheduler.model.performance.PerformanceOverview" id="performanceOverview">
+		<id column="id" property="performanceId.value"/>
+		<result column="name" property="performanceName.value"/>
+		<result column="start_date" property="performanceDateRange.start"/>
+		<result column="end_date" property="performanceDateRange.end"/>
+	</resultMap>
+
+	<select id="listOf" resultMap="performanceOverview" flushCache="true">
+		SELECT
+			information.id,
+			information.name,
+			information.start_date,
+			information.end_date
+		FROM
+			performance.information
+		WHERE
+			information.user_id = #{user.userId.value}
+		ORDER BY start_date,end_date,information.id;
+	</select>
+
+</mapper>
