@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="template :: fragment_html_head(title='公演概要リスト')">
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<header th:include="template :: fragment_header(title='公演概要リスト')"></header>
+		<table>
+		<tr>
+			<th>公演開始日</th>
+			<th>公演終了日</th>
+			<th>公演名</th>
+		</tr>
+		<tr th:each="performanceOverviewList : ${performanceOverviewList.list}">
+			<td th:text="${performanceOverviewList.performanceDateRange.start}">-月-日</td>
+			<td th:text="${performanceOverviewList.performanceDateRange.end}">-月-日</td>
+			<td th:text="${performanceOverviewList.performanceName.value}">公演名</td>
+		</tr>
+		</table>
+	<footer th:include="template :: fragment_footer"></footer>
+</body>
+</html>
