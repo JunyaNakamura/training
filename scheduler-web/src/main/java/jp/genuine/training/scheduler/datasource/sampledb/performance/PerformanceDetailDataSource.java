@@ -1,5 +1,7 @@
 package jp.genuine.training.scheduler.datasource.sampledb.performance;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +16,9 @@ public class PerformanceDetailDataSource implements PerformanceDetailRepository{
 	public PerformanceDetailMapper performanceDetailMapper;
 
 	@Override
-	public Performance findBy(PerformanceId performanceId, User user) {
+	public Optional<Performance> findBy(PerformanceId performanceId, User user) {
 		Performance performanceDetail = performanceDetailMapper.findBy( performanceId, user );
-		return performanceDetail;
+		return Optional.ofNullable(performanceDetail);
 	}
 
 }
