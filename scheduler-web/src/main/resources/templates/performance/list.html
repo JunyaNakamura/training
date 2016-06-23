@@ -17,6 +17,7 @@
 			<td th:text="${performanceOverviewList.performanceDateRange.start}">-月-日</td>
 			<td th:text="${performanceOverviewList.performanceDateRange.end}">-月-日</td>
 			<td th:text="${performanceOverviewList.performanceName.value}">公演名</td>
+			<td><a href="detail.html" th:href="@{/performance/{orderId}/(orderId=${performanceOverviewList.performanceId.value})}">公演詳細へ</a></td>
 		</tr>
 		</table>
 	<footer th:include="template :: fragment_footer"></footer>

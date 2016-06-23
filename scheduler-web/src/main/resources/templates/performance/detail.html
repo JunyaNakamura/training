@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="template :: fragment_html_head(title='公演詳細')">
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<header th:include="template :: fragment_header(title='公演詳細画面')"></header>
+		<table>
+		<tr>
+			<th>公演名</th>
+			<td th:text="${performanceDetail.performanceName.value}"></td>
+		</tr>
+		<tr>
+			<th>サイトURL</th>
+			<td th:text="${performanceDetail.performanceUrl.value}"></td>
+		</tr>
+		<tr>
+			<th>会場名</th>
+			<td th:text="${performanceDetail.venue.venueName.value}"></td>
+		</tr>
+		<tr>
+			<th>会場URL</th>
+			<td th:text="${performanceDetail.venue.venueUrl.value}"></td>
+		</tr>
+		<tr>
+			<th>公演開始日</th>
+			<td th:text="${performanceDetail.performanceDate.performanceDateRange.start}"></td>
+		</tr>
+		<tr>
+			<th>公演終了日</th>
+			<td th:text="${performanceDetail.performanceDate.performanceDateRange.end}"></td>
+		</tr>
+		<tr th:each="suspendDateList : ${performanceDetail.performanceDate.suspendDateList.list}">
+			<th>休演日</th>
+			<td th:text="${suspendDateList}"></td>
+		</tr>
+		<tr>
+			<th>メモ</th>
+			<td th:text="${performanceDetail.memo.value}"></td>
+		</tr>
+
+		</table>
+		<a href="list.html" th:href="@{/performances}">公演概要一覧へ</a>
+	<footer th:include="template :: fragment_footer"></footer>
+</body>
+</html>
