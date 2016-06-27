@@ -2,9 +2,12 @@ package jp.genuine.training.scheduler.model.performance;
 
 import java.io.Serializable;
 
-public class PerformanceDate implements Serializable{
+import javax.validation.Valid;
 
+public class PerformanceDate implements Serializable{
+	@Valid
 	private PerformanceDateRange performanceDateRange;
+	@Valid
 	private SuspendDateList suspendDateList;
 
 	public PerformanceDate() {

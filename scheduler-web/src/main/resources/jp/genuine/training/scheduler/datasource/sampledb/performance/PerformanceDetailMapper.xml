@@ -12,7 +12,7 @@
 		<result column="end_date" property="performanceDate.performanceDateRange.end"/>
 		<result column="memo" property="memo.value"/>
 		<collection property="performanceDate.suspendDateList.list" ofType="java.time.LocalDate">
-			<result column="holiday_date"/>
+			<result column="suspend_date"/>
 		</collection>
 	</resultMap>
 
@@ -25,20 +25,45 @@
 			information.place_url,
 			information.start_date,
 			information.end_date,
-			holiday.holiday_date,
+			suspend.suspend_date,
 			information.memo
 		FROM
 			performance.information
 		LEFT OUTER JOIN
-			performance.holiday
+			performance.suspend
 		ON
-			information.id = holiday.performance_id
+			information.id = suspend.performance_id
 		WHERE
 			information.user_id = #{user.userId.value}
 		AND
 			information.id = #{performanceId.value}
 		ORDER BY
-			holiday.holiday_date,holiday.id;
+			suspend.suspend_date,suspend.id;
 	</select>
+
+	<resultMap type="jp.genuine.training.scheduler.model.performance.PerformanceId" id="performanceNextId">
+		<id column="nextval" property="value"/>
+	</resultMap>
+
+	<select id="nextId" resultMap="performanceNextId" flushCache="true">
+		SELECT
+			nextval('performance.performance_id');
+	</select>
+
+	<insert id="register" flushCache="true">
+		INSERT INTO
+			performance.information (id,user_id,name,site_url,place,place_url,start_date,end_date,memo)
+		VALUES
+			(#{performance.performanceId.value},
+			#{performance.userId.value},
+			#{performance.performanceName.value},
+			#{performance.performanceUrl.value},
+			#{performance.venue.venueName.value},
+			#{performance.venue.venueUrl.value},
+			#{performance.performanceDate.performanceDateRange.start},
+			#{performance.performanceDate.performanceDateRange.end},
+			#{performance.memo.value});
+	</insert>
+
 
 </mapper>

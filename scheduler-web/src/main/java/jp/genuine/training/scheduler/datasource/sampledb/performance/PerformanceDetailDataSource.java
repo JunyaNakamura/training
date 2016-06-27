@@ -20,5 +20,15 @@ public class PerformanceDetailDataSource implements PerformanceDetailRepository{
 		Performance performanceDetail = performanceDetailMapper.findBy( performanceId, user );
 		return Optional.ofNullable(performanceDetail);
 	}
+	@Override
+	public PerformanceId nextId(){
+		PerformanceId performanceNextId = performanceDetailMapper.nextId();
+		return performanceNextId;
+	}
+	@Override
+	public void register(Performance performance) {
+		performanceDetailMapper.register(performance);
+	}
+
 
 }

@@ -1,0 +1,1 @@
+CREATE SEQUENCE performance.performance_id;

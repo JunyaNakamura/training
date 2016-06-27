@@ -8,4 +8,6 @@ import jp.genuine.training.scheduler.model.user.User;
 
 public interface PerformanceDetailMapper {
 	Performance findBy(@Param("performanceId") PerformanceId performanceId, @Param("user") User user);
+	PerformanceId nextId();
+	void register(@Param("performance") Performance performance);
 }

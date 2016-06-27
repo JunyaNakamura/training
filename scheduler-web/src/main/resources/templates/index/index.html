@@ -10,7 +10,9 @@
 		<span  sec:authorize="hasRole('ROLE_ADMIN')">管理者権限でログイン中</span>
 	    <span sec:authorize="hasRole('ROLE_USER')">一般権限でログイン中</span>
 	</div>
-    
+	<a href="index.html" th:href="@{/performances}">公演一覧へ</a>
+	<a href="logout.html" th:href="@{/logout}">ログアウトする</a>
+
 	<footer th:include="template :: fragment_footer"></footer>
 </body>
 </html>
