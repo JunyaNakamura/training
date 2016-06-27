@@ -1,16 +1,9 @@
 package jp.genuine.training.scheduler.datasource.sampledb.performance
 
-import java.time.format.DateTimeFormatter
-
 import javax.sql.DataSource
 
 import jp.genuine.test.util.LogbackHelper
 import jp.genuine.training.TestConfig
-import jp.genuine.training.scheduler.model.performance.PerformanceId
-import jp.genuine.training.scheduler.model.user.Name
-import jp.genuine.training.scheduler.model.user.Password
-import jp.genuine.training.scheduler.model.user.User
-import jp.genuine.training.scheduler.model.user.UserId
 
 import org.dbunit.database.DatabaseConnection
 import org.dbunit.database.IDatabaseConnection
@@ -51,7 +44,7 @@ public class PerformanceDetailDataSourceSpec extends Specification{
 	def cleanupSpec(){
 	   LogbackHelper.loggingTestEnd()
 	}
-
+/*
 	@Unroll
 	def "<#TEST_NAME>find:データの取得->#TITLE"(){
 		given:
@@ -83,4 +76,13 @@ public class PerformanceDetailDataSourceSpec extends Specification{
 			PERFORMANCE_ID|PERFORMANCE_NAME|SITE_URL|PLACE_NAME|PLACE_URL|START_DATE|END_DATE|MEMO|HOLIDAY_LIST_SIZE
 			1|"シェイクスピア"|"http:html"|"笹塚劇場"|""|"2016-03-15"|"2016-03-22"|"見たい"|2
 	}
+	*/
+
+	@Unroll
+	def "<#TEST_NAME>nextIdの動作確認->#TITLE"(){
+		expect:
+			def resultNextId = performanceDetailDataSource.nextId()
+			resultNextId != null
+	}
+
 }

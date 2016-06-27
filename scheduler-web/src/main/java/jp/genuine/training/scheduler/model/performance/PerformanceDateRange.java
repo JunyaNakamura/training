@@ -2,8 +2,15 @@ package jp.genuine.training.scheduler.model.performance;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PerformanceDateRange {
+	@NotNull
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate start;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate end;
 
 	public PerformanceDateRange() {

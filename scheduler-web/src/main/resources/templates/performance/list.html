@@ -20,6 +20,8 @@
 			<td><a href="detail.html" th:href="@{/performance/{orderId}/(orderId=${performanceOverviewList.performanceId.value})}">公演詳細へ</a></td>
 		</tr>
 		</table>
+		<a href="form.html" th:href="@{/performance/register}">公演概要を登録する</a>
+		<a href="index.html" th:href="@{/index}">トップへ</a>
 	<footer th:include="template :: fragment_footer"></footer>
 </body>
 </html>

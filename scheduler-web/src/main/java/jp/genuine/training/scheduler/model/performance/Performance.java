@@ -2,18 +2,35 @@ package jp.genuine.training.scheduler.model.performance;
 
 import java.io.Serializable;
 
+import javax.validation.Valid;
+
 import jp.genuine.training.scheduler.model.user.UserId;
 
 public class Performance implements Serializable{
-
+	@Valid
 	private UserId userId;
+	@Valid
 	private PerformanceName performanceName;
+	@Valid
 	private PerformanceId performanceId;
+	@Valid
 	private PerformanceUrl performanceUrl;
+	@Valid
 	private Memo memo;
+	@Valid
 	private Venue venue;
+	@Valid
 	private PerformanceDate performanceDate;
 
+	public Performance(PerformanceId performanceId,UserId userId){
+		performanceName = new PerformanceName();
+		performanceUrl = new PerformanceUrl();
+		memo = new Memo();
+		venue = new Venue();
+		performanceDate = new PerformanceDate();
+		this.performanceId = performanceId;
+		this.userId = userId;
+	}
 	public Performance() {
 		userId = new UserId();
 		performanceName = new PerformanceName();

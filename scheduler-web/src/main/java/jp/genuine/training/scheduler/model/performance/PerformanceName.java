@@ -2,8 +2,10 @@ package jp.genuine.training.scheduler.model.performance;
 
 import java.io.Serializable;
 
-public class PerformanceName implements Serializable{
+import org.hibernate.validator.constraints.NotEmpty;
 
+public class PerformanceName implements Serializable{
+	@NotEmpty
 	private String value;
 
 	public PerformanceName() {

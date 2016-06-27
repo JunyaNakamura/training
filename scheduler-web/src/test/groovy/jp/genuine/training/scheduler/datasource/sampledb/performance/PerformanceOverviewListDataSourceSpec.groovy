@@ -24,7 +24,7 @@ import spock.lang.Unroll
 
 @ActiveProfiles("test")
 @ContextConfiguration(classes = TestConfig.class, initializers = ConfigFileApplicationContextInitializer.class)
-public class PerformanceDataSourceSpec extends Specification
+public class PerformanceOverviewListDataSourceSpec extends Specification
 {
 	@Autowired
     PerformanceOverviewListDataSource performanceDataSource;
