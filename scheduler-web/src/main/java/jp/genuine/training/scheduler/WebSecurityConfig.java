@@ -30,6 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().hasAnyRole("USER","ADMIN");
 
 		http.formLogin()
+				.loginPage("/login")
+				.failureUrl("/login?error").permitAll()
         	.defaultSuccessUrl("/index");
 
 		http.logout()
