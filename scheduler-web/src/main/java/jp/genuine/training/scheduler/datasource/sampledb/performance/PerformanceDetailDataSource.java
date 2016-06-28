@@ -29,6 +29,10 @@ public class PerformanceDetailDataSource implements PerformanceDetailRepository{
 	public void register(Performance performance) {
 		performanceDetailMapper.register(performance);
 	}
+	@Override
+	public void modify(Performance performance) {
+		performanceDetailMapper.modify(performance);
+	}
 
 
 }

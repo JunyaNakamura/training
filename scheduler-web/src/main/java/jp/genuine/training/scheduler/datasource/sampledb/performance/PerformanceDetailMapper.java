@@ -10,4 +10,5 @@ public interface PerformanceDetailMapper {
 	Performance findBy(@Param("performanceId") PerformanceId performanceId, @Param("user") User user);
 	PerformanceId nextId();
 	void register(@Param("performance") Performance performance);
+	void modify(@Param("performanceModify") Performance performance);
 }

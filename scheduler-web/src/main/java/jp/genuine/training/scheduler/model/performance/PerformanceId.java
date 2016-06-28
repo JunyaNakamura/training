@@ -2,11 +2,9 @@ package jp.genuine.training.scheduler.model.performance;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
-
 
 public class PerformanceId implements Serializable{
-	@NotNull
+
 	private Integer value;
 
 	public PerformanceId() {

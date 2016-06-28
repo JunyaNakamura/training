@@ -65,5 +65,20 @@
 			#{performance.memo.value});
 	</insert>
 
+	<update id="modify" flushCache="true">
+		UPDATE
+			performance.information
+		SET
+			name = #{performanceModify.performanceName.value},
+			site_url = #{performanceModify.performanceUrl.value},
+			place = #{performanceModify.venue.venueName.value},
+			place_url = #{performanceModify.venue.venueUrl.value},
+			start_date = #{performanceModify.performanceDate.performanceDateRange.start},
+			end_date = #{performanceModify.performanceDate.performanceDateRange.end},
+			memo = #{performanceModify.memo.value}
+		WHERE
+			id = #{performanceModify.performanceId.value};
+	</update>
+
 
 </mapper>

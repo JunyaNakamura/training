@@ -8,4 +8,5 @@ public interface PerformanceDetailRepository {
 	public Optional<Performance>findBy( PerformanceId performanceId, User user );
 	public PerformanceId nextId();
 	public void register(Performance performance);
+	public void modify(Performance performance);
 }
