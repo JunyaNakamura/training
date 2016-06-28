@@ -39,6 +39,8 @@ public class LoginUser implements Serializable,UserDetails{
 
 	@Override
 	public String getPassword() {
+		if(user == null)
+			return null;
 		return user.getPassword().getValue();
 	}
 
