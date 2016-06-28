@@ -44,6 +44,7 @@
 		</table>
 		<a href="list.html" th:href="@{/performances}">公演概要一覧へ</a>
 		<a href="index.html" th:href="@{/index}">トップへ</a>
+		<a href="detail.html" th:href="@{/performance/modify/{orderId}/(orderId=${performanceDetail.performanceId.value})}">概要を編集する</a>
 	<footer th:include="template :: fragment_footer"></footer>
 </body>
 </html>
