@@ -5,18 +5,18 @@
 	<meta charset="UTF-8" />
 </head>
 <body>
-	<header th:include="template :: fragment_header(title='公演情報を編集します。')"></header>
+	<header th:include="template :: fragment_header(title='Scheduler')"></header>
 	<div class="mdl-grid">
 		<div class="mdl-cell mdl-cell--2-col"></div>
 		<div class="mdl-cell mdl-cell--8-col">
 			<div class="mdl-card__wide mdl-card mdl-shadow--2dp">
 				<div class="mdl-card__title">
 					<h2>
-						<i class="fa fa-pencil" aria-hidden="true"></i> Modify Performance
+						<i class="fa fa-pencil" aria-hidden="true"></i> Performance Modify
 					</h2>
 				</div>
 				<div>
-					<form th:action="@{/performance/modify}" th:object="${performanceModify}" method="POST">
+					<form th:action="@{/performance}" th:object="${performanceModify}" method="POST">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 						th:classappend="*{#fields.hasErrors('performanceName.value')}? is-invalid">
 							<label>公演名</label>
@@ -67,7 +67,13 @@
 								th:errors="*{memo.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-card__actions">
-							<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
+							<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">編集する</button>
+						</div>
+						<div class="mdl-card__actions">
+							<button type="button"onClick="history.back()"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">戻る</button>
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							<a th:href="@{/index}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">トップへ</a>
 						</div>
 					</form>
 				</div>
