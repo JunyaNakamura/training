@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:include="template :: fragment_html_head(title='Training Application')">
+<head th:include="template :: fragment_html_head(title='トップページ')">
 </head>
 <body>
-	<header th:include="template :: fragment_header(title='Training Application')"></header>
+	<header th:include="template :: fragment_header(title='Scheduler')"></header>
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--2-col"></div>
+			<div class="mdl-cell mdl-cell--8-col">
+				<div class="mdl-card__wide mdl-card mdl-shadow--2dp">
+					<div class="mdl-card__title">
+						<h2><i class="fa fa-map-o" aria-hidden="true"></i> Top Menu</h2>
+					</div>
+					<div>
+						<form name="top">
+							<div class="mdl-card__actions">
+								<button type="button"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="location.href='performances'">公演一覧を表示する</button>
+							</div>
+							<div class="mdl-card__actions">
+								<button type="button"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="location.href='performance/register'">公演概要を登録する</button>
+							</div>
+							<div class="mdl-card__actions">
+								<button type="button"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="location.href='logout'">ログアウトする</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="mdl-cell mdl-cell--2-col"></div>
+		</div>
 
-	<div>
-		<span  sec:authorize="hasRole('ROLE_ADMIN')">管理者権限でログイン中</span>
-	    <span sec:authorize="hasRole('ROLE_USER')">一般権限でログイン中</span>
-	</div>
-	<a href="index.html" th:href="@{/performances}">公演一覧へ</a>
-	<a href="logout.html" th:href="@{/logout}">ログアウトする</a>
-
-	<footer th:include="template :: fragment_footer"></footer>
+		<footer th:include="template :: fragment_footer"></footer>
 </body>
 </html>

@@ -24,12 +24,12 @@ import jp.genuine.training.scheduler.service.performance.PerformanceModifyServic
 
 @Controller
 @SessionAttributes("performanceModify")
-@RequestMapping("/performance/modify")
+@RequestMapping("/performance")
 public class PerformanceModifyController {
 	@Autowired
 	private PerformanceModifyService performanceModifyService;
 
-	@RequestMapping(value="/{performanceId}",method=RequestMethod.GET)
+	@RequestMapping(value="/{performanceId}/modify",method=RequestMethod.GET)
 	public String detail(
 			@PathVariable("performanceId") Integer performanceId,
 		Model model,
