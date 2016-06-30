@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="template :: fragment_html_head(title='スケジュール登録')">
+	<meta charset="UTF-8" />
+</head>
+<body>
+	<header th:include="template :: fragment_header(title='Scheduler')"></header>
+	<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--2-col"></div>
+		<div class="mdl-cell mdl-cell--8-col">
+			<div class="mdl-card__wide mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title">
+					<h2>
+						<i class="fa fa-pencil" aria-hidden="true"></i> スケジュール登録画面
+					</h2>
+				</div>
+				<div>
+					<form th:action="@{/schedule}" th:object="${schedule}"method="POST">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						th:classappend="*{#fields.hasErrors('scheduledDate.value')}? is-invalid">
+							<label>登録日</label>
+							<select  th:field="*{scheduledDate.value}">
+							<option value="2016-01-01"th:each="performanceDateRange : ${performanceSchedule.performanceDate.performanceDateRange.days}"
+							th:text="${performanceDateRange}"th:value="${performanceDateRange}"></option>
+							</select>
+							<span th:if="*{#fields.hasErrors('scheduledDate.value')}"
+								th:errors="*{scheduledDate.value}" class="mdl-textfield__error"></span>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						th:classappend="*{#fields.hasErrors('openTime.valid')}? is-invalid">
+							<label class="mdl-textfield__label">　　開場時間</label>
+							<input type="time" value="00:00"th:field="*{openTime.open}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('openTime.valid')}"
+								th:errors="*{openTime.valid}" class="mdl-textfield__error"></span>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						th:classappend="*{#fields.hasErrors('startTime.valid')}? is-invalid">
+							<label class="mdl-textfield__label">　　開演時間</label>
+							<input type="time" value="00:00:00" th:field="*{startTime.start}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('startTime.valid')}"
+								th:errors="*{startTime.valid}" class="mdl-textfield__error"></span>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						th:classappend="*{#fields.hasErrors('ticketPrice.value')}? is-invalid">
+							<label class="mdl-textfield__label">チケット代</label>
+							<input type="number" th:field="*{ticketPrice.value}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('ticketPrice.value')}"
+								th:errors="*{ticketPrice.value}" class="mdl-textfield__error"></span>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						th:classappend="*{#fields.hasErrors('budget.value')}? is-invalid">
+							<label class="mdl-textfield__label">物販費用</label>
+							<input type="number" th:field="*{budget.value}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('budget.value')}"
+								th:errors="*{budget.value}" class="mdl-textfield__error"></span>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						th:classappend="*{#fields.hasErrors('memo.value')}? is-invalid">
+							<label class="mdl-textfield__label">メモ</label>
+							<input type="text" th:field="*{memo.value}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('memo.value')}"
+								th:errors="*{memo.value}" class="mdl-textfield__error"></span>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						th:classappend="*{#fields.hasErrors('implessions.value')}? is-invalid">
+							<label class="mdl-textfield__label">感想</label>
+							<input type="text" th:field="*{implessions.value}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('implessions.value')}"
+								th:errors="*{implessions.value}" class="mdl-textfield__error"></span>
+						</div>
+						<div class="mdl-card__actions">
+							<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">登録する</button>
+						</div>
+						<div class="mdl-card__actions">
+							<button type="button"onClick="history.back()"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">戻る</button>
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							<a th:href="@{/index}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">トップへ</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="mdl-cell mdl-cell--2-col"></div>
+	</div>
+	<footer th:include="template :: fragment_footer"></footer>
+</body>
+</html>

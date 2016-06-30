@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jp.genuine.training.scheduler.datasource.sampledb.schedule.ScheduleRegisterMapper">
+
+
+
+	<resultMap type="jp.genuine.training.scheduler.model.schedule.ScheduleId" id="scheduleNextId">
+		<id column="nextval" property="value"/>
+	</resultMap>
+
+	<select id="nextId" resultMap="scheduleNextId" flushCache="true">
+		SELECT
+			nextval('schedule.schedule_id');
+	</select>
+	<insert id="register" flushCache="true">
+		INSERT INTO
+			schedule.information (id,performance_id,fix_date,open_time,start_time,ticket_price,budget,memo,implession)
+		VALUES
+			(#{schedule.scheduleId.value},
+			#{schedule.performanceId.value},
+			#{schedule.scheduledDate.value},
+			CAST(#{schedule.openTime.open} AS TIME),
+			CAST(#{schedule.startTime.start} AS TIME),
+			#{schedule.ticketPrice.integerValue},
+			#{schedule.budget.integerValue},
+			#{schedule.memo.value},
+			#{schedule.implessions.value});
+	</insert>
+
+
+</mapper>

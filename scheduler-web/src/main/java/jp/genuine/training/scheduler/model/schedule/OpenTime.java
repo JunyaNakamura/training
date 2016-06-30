@@ -1,31 +1,55 @@
 package jp.genuine.training.scheduler.model.schedule;
 
 import java.io.Serializable;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+import javax.validation.constraints.AssertTrue;
 
 public class OpenTime implements Serializable{
 
-	private String value;
+	private String open;
 
 	public OpenTime() {
-		value = "";
+		open = "";
 	}
 
-	public OpenTime(String value) {
-		this.value = value;
+	public OpenTime(String open) {
+		this.open = open;
 	}
 
-	public String getValue() {
-		return value;
+	public LocalTime getOpenLocalTime(){
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		return LocalTime.parse(open,formatter);
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	@AssertTrue(message="{jp.genuine.training.scheduler.timeFormatError.message}")
+	public boolean isValid(){
+		try{
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+			LocalTime.parse(open,formatter);
+		}catch(DateTimeParseException e){
+			return false;
+		}
+		return true;
 	}
+
+	public String getOpen() {
+		return open;
+	}
+
+	public void setOpen(String open) {
+		this.open = open;
+	}
+
 
 	@Override
 	public String toString() {
-		return String.format("OpenTime [value=%s]", value);
+		return String.format("OpenTime [open=%s]", open);
 	}
+
+
 	private static final long serialVersionUID = -8974100009122064978L;
 
 }
