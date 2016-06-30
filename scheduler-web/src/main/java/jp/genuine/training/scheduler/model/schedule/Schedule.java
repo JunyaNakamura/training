@@ -2,6 +2,8 @@ package jp.genuine.training.scheduler.model.schedule;
 
 import java.io.Serializable;
 
+import javax.validation.Valid;
+
 import jp.genuine.training.scheduler.model.performance.PerformanceId;
 
 public class Schedule implements Serializable{
@@ -9,14 +11,32 @@ public class Schedule implements Serializable{
 
 	private PerformanceId performanceId;
 	private ScheduleId scheduleId;
+	@Valid
 	private ScheduledDate scheduledDate;
+	@Valid
 	private Budget budget;
+	@Valid
 	private TicketPrice ticketPrice;
 	private Memo memo;
 	private TentativeSchedule tentativeSchedule;
+	@Valid
 	private OpenTime openTime;
+	@Valid
 	private StartTime startTime;
 	private Implessions implessions;
+
+	public Schedule(ScheduleId scheduleId,PerformanceId performanceId){
+		this.scheduleId=scheduleId;
+		this.performanceId=performanceId;
+		scheduledDate = new ScheduledDate();
+		budget = new Budget();
+		ticketPrice = new TicketPrice();
+		memo = new Memo();
+		tentativeSchedule = new TentativeSchedule();
+		openTime = new OpenTime();
+		startTime = new StartTime();
+		implessions = new Implessions();
+	}
 
 	public Schedule() {
 		performanceId = new PerformanceId();

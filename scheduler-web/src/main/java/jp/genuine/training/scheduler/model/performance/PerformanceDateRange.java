@@ -1,6 +1,9 @@
 package jp.genuine.training.scheduler.model.performance;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
@@ -10,6 +13,8 @@ public class PerformanceDateRange {
 	@NotNull
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate start;
+
+	@NotNull
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate end;
 
@@ -29,6 +34,19 @@ public class PerformanceDateRange {
 
 	public LocalDate getEnd() {
 		return end;
+	}
+
+	public List<LocalDate> getDays() {
+		LocalDate from = start;
+		LocalDate to = end;
+		Long dayCount = ChronoUnit.DAYS.between(from, to);
+		List<LocalDate> days = new ArrayList<LocalDate>();
+		LocalDate start = LocalDate.of(from.getYear(), from.getMonth(), from.getDayOfMonth());
+		for (int i = 0; i <= dayCount; i++) {
+			days.add(start);
+			start = start.plusDays(1);
+		}
+		return days;
 	}
 
 	public void setStart(LocalDate start) {

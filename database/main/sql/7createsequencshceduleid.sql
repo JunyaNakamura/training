@@ -1,0 +1,1 @@
+CREATE SEQUENCE schedule.schedule_id;
