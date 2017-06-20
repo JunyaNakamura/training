@@ -63,11 +63,11 @@
 								th:errors="*{memo.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('implessions.value')}? is-invalid">
+						th:classappend="*{#fields.hasErrors('implession.value')}? is-invalid">
 							<label class="mdl-textfield__label">感想</label>
-							<input type="text" th:field="*{implessions.value}" class="mdl-textfield__input" />
-							<span th:if="*{#fields.hasErrors('implessions.value')}"
-								th:errors="*{implessions.value}" class="mdl-textfield__error"></span>
+							<input type="text" th:field="*{implession.value}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('implession.value')}"
+								th:errors="*{implession.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-card__actions">
 							<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">登録する</button>

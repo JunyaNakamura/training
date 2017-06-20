@@ -25,7 +25,7 @@ public class Schedule implements Serializable{
 	private OpenTime openTime;
 	@Valid
 	private StartTime startTime;
-	private Implessions implessions;
+	private Implession implession;
 
 	public Schedule(ScheduleId scheduleId,PerformanceId performanceId, PerformanceName performanceName){
 		this.scheduleId=scheduleId;
@@ -38,7 +38,7 @@ public class Schedule implements Serializable{
 		tentativeSchedule = new TentativeSchedule();
 		openTime = new OpenTime();
 		startTime = new StartTime();
-		implessions = new Implessions();
+		implession = new Implession();
 	}
 
 	public Schedule() {
@@ -52,12 +52,12 @@ public class Schedule implements Serializable{
 		tentativeSchedule = new TentativeSchedule();
 		openTime = new OpenTime();
 		startTime = new StartTime();
-		implessions = new Implessions();
+		implession = new Implession();
 	}
 
 	public Schedule(PerformanceId performanceId, ScheduleId scheduleId, ScheduledDate scheduledDate, Budget budget,
 			TicketPrice ticketPrice, Memo memo, TentativeSchedule tentativeSchedule, OpenTime openTime,
-			StartTime startTime, Implessions implessions, PerformanceName performanceName) {
+			StartTime startTime, Implession implessions, PerformanceName performanceName) {
 		this.performanceId = performanceId;
 		this.performanceName = performanceName;
 		this.scheduleId = scheduleId;
@@ -68,7 +68,7 @@ public class Schedule implements Serializable{
 		this.tentativeSchedule = tentativeSchedule;
 		this.openTime = openTime;
 		this.startTime = startTime;
-		this.implessions = implessions;
+		this.implession = implessions;
 	}
 
 	public PerformanceId getPerformanceId() {
@@ -107,8 +107,8 @@ public class Schedule implements Serializable{
 		return startTime;
 	}
 
-	public Implessions getImplessions() {
-		return implessions;
+	public Implession getImplession() {
+		return implession;
 	}
 
 	public void setPerformanceId(PerformanceId performanceId) {
@@ -147,8 +147,8 @@ public class Schedule implements Serializable{
 		this.startTime = startTime;
 	}
 
-	public void setImplessions(Implessions implessions) {
-		this.implessions = implessions;
+	public void setImplession(Implession implessions) {
+		this.implession = implessions;
 	}
 
 	public PerformanceName getPerformanceName() {
@@ -162,9 +162,9 @@ public class Schedule implements Serializable{
 	@Override
 	public String toString() {
 		return String.format(
-				"Schedule [performanceId=%s, scheduleId=%s, scheduledDate=%s, budget=%s, ticketPrice=%s, memo=%s, tentativeSchedule=%s, openTime=%s, startTime=%s, implessions=%s]",
+				"Schedule [performanceId=%s, scheduleId=%s, scheduledDate=%s, budget=%s, ticketPrice=%s, memo=%s, tentativeSchedule=%s, openTime=%s, startTime=%s, implession=%s]",
 				performanceId, scheduleId, scheduledDate, budget, ticketPrice, memo, tentativeSchedule, openTime,
-				startTime, implessions);
+				startTime, implession);
 	}
 	private static final long serialVersionUID = -546319281156951601L;
 

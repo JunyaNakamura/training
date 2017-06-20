@@ -23,14 +23,15 @@ import jp.genuine.training.scheduler.model.user.LoginUser;
 import jp.genuine.training.scheduler.service.schedule.ScheduleDetailService;
 
 @Controller
-@SessionAttributes("scheduleModify")
-@RequestMapping("/schedule/modify")
-public class ScheduleModifyController {
+@SessionAttributes("scheduleDetail")
+@RequestMapping("/schedule/detail")
+public class ScheduleDetailController {
+
 	@Autowired
 	private ScheduleDetailService scheduleDetailService;
 
 	@RequestMapping(value="/{scheduleId}",method=RequestMethod.GET)
-	public String modify(
+	public String detail(
 			@PathVariable("scheduleId") Integer scheduleId,
 		Model model,
 		WebRequest request)
@@ -38,27 +39,27 @@ public class ScheduleModifyController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		LoginUser loginUser = (LoginUser) authentication.getPrincipal();
 
-		Schedule scheduleModify = scheduleDetailService.findBy(new ScheduleId(scheduleId),loginUser);
-		model.addAttribute("scheduleModify",scheduleModify);
-		return "/schedule/modify/form";
+		Schedule scheduleDetail = scheduleDetailService.findBy(new ScheduleId(scheduleId),loginUser);
+		model.addAttribute("scheduleDetail",scheduleDetail);
+		return "/schedule/detail";
 	}
 
-	@RequestMapping(value="",method=RequestMethod.POST)
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	public String execute(
-			@Valid @ModelAttribute("scheduleModify") Schedule schedule,
+			@Valid @ModelAttribute("scheduleDetail") Schedule schedule,
 			BindingResult bindingResult,
 			@AuthenticationPrincipal LoginUser loginUser,
 			Model model,
 			HttpServletRequest httpServletRequest){
 
-		model.addAttribute("scheduleModify",schedule);
+		model.addAttribute("scheduleDetail",schedule);
 
 		if(bindingResult.hasErrors())
-			return "/schedule/modify/form";
+			return "/schedule/detail";
 
-		scheduleDetailService.modify(schedule);
+		scheduleDetailService.delete(schedule);
 
-		return "/schedule/modify/completed";
+		return "/schedule/delete/completed";
 
 	}
 }

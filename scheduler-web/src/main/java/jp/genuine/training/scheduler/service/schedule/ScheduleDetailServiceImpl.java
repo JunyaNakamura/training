@@ -9,7 +9,7 @@ import jp.genuine.training.scheduler.model.schedule.ScheduleDetailRepository;
 import jp.genuine.training.scheduler.model.schedule.ScheduleId;
 import jp.genuine.training.scheduler.model.user.LoginUser;
 @Service
-public class ScheduleModifyServiceImpl implements ScheduleModifyService{
+public class ScheduleDetailServiceImpl implements ScheduleDetailService{
 
 	@Autowired
 	private ScheduleDetailRepository scheduleDetailRepository;

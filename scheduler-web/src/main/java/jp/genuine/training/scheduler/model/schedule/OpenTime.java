@@ -20,7 +20,7 @@ public class OpenTime implements Serializable{
 	}
 
 	public String getOpen() {
-		return open;
+		return open.substring(0, 5);
 	}
 
 	public void setOpen(String open) {
