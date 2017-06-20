@@ -1,5 +1,7 @@
 package jp.genuine.training.scheduler.datasource.sampledb.schedule;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import jp.genuine.training.scheduler.model.performance.Performance;
@@ -12,4 +14,5 @@ public interface ScheduleRegisterMapper {
 	Performance findBy(@Param("performanceId") PerformanceId performanceId, @Param("user") User user);
 	ScheduleId nextId();
 	void register(@Param("schedule") Schedule schedule);
+	List<Schedule> selectAll();
 }

@@ -9,4 +9,5 @@ public interface PerformanceDetailRepository {
 	public PerformanceId nextId();
 	public void register(Performance performance);
 	public void modify(Performance performance);
+	public void delete(Performance performance);
 }

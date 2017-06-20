@@ -12,7 +12,7 @@ public class ScheduleRegisterFactory {
 
 	public Schedule create(PerformanceId performanceId){
 		ScheduleId scheduleId = scheduleRegisterRepository.nextId();
-		Schedule schedule = new Schedule(scheduleId,performanceId);
+		Schedule schedule = new Schedule(scheduleId,performanceId, null);
 		return schedule;
 	}
 }

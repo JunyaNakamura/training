@@ -19,6 +19,14 @@ public class OpenTime implements Serializable{
 		this.open = open;
 	}
 
+	public String getOpen() {
+		return open;
+	}
+
+	public void setOpen(String open) {
+		this.open = open;
+	}
+
 	public LocalTime getOpenLocalTime(){
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 		return LocalTime.parse(open,formatter);
@@ -34,15 +42,6 @@ public class OpenTime implements Serializable{
 		}
 		return true;
 	}
-
-	public String getOpen() {
-		return open;
-	}
-
-	public void setOpen(String open) {
-		this.open = open;
-	}
-
 
 	@Override
 	public String toString() {

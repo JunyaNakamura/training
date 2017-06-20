@@ -6,4 +6,5 @@ import jp.genuine.training.scheduler.model.user.LoginUser;
 
 public interface PerformanceDetailService {
 	public Performance findBy(PerformanceId performanceId,LoginUser loginUser);
+	public void delete(Performance performance);
 }

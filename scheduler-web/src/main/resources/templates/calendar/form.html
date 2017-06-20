@@ -4,37 +4,88 @@
 <head th:include="template :: fragment_html_head(title='トップページ')">
 </head>
 <body>
-	<script th:inline="javascript">
+	<script>
         $(document).ready(function () {
-        	var today = new Date();
-
             $('#calendar').fullCalendar({
             	header: {
     				left: 'prev,next today',
     				center: 'title',
-    				right: 'nothing'
+    				right: 'month,basicWeek,basicDay'
     			},
-    			defaultDate: today,
-    			editable: false,
+    			defaultDate: '2017-05-12',
+    			navLinks: true, // can click day/week names to navigate views
+    			editable: true,
     			eventLimit: true, // allow "more" link when too many events
-    			events:  /*[[${performanceIndex}]]*/,
-    			eventClick: function(calEvent, jsEvent, view) {
-    			    location.href = 'performance/register/' + calEvent.id;
-    			}
+    			events: [
+    				{
+    					title: 'All Day Event',
+    					start: '2017-05-01'
+    				},
+    				{
+    					title: 'Long Event',
+    					start: '2017-05-07',
+    					end: '2017-05-10'
+    				},
+    				{
+    					id: 999,
+    					title: 'Repeating Event',
+    					start: '2017-05-09T16:00:00'
+    				},
+    				{
+    					id: 999,
+    					title: 'Repeating Event',
+    					start: '2017-05-16T16:00:00'
+    				},
+    				{
+    					title: 'Conference',
+    					start: '2017-05-11',
+    					end: '2017-05-13'
+    				},
+    				{
+    					title: 'Meeting',
+    					start: '2017-05-12T10:30:00',
+    					end: '2017-05-12T12:30:00'
+    				},
+    				{
+    					title: 'Lunch',
+    					start: '2017-05-12T12:00:00'
+    				},
+    				{
+    					title: 'Meeting',
+    					start: '2017-05-12T14:30:00'
+    				},
+    				{
+    					title: 'Happy Hour',
+    					start: '2017-05-12T17:30:00'
+    				},
+    				{
+    					title: 'Dinner',
+    					start: '2017-05-12T20:00:00'
+    				},
+    				{
+    					title: 'Birthday Party',
+    					start: '2017-05-13T07:00:00'
+    				},
+    				{
+    					title: 'Click for Google',
+    					url: 'http://google.com/',
+    					start: '2017-05-28'
+    				}
+    			]
     		});
         });
 	</script>
-
 	<header th:include="template :: fragment_header(title='Scheduler')"></header>
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--2-col"></div>
 			<div class="mdl-cell mdl-cell--8-col">
 				<div class="mdl-card__wide mdl-card mdl-shadow--2dp">
 					<div class="mdl-card__title">
-						<h2><i class="fa fa-map-o" aria-hidden="true"></i> トップメニュー</h2>
+						<h2><i class="fa fa-map-o" aria-hidden="true"></i>カレンダー</h2>
 					</div>
+					<div>
 		<!-- カレンダー -->
-			<div id="calendar"class="mdl-shadow--3dp"></div>
+		<div id="calendar"></div>
 						<form name="top">
 							<div class="mdl-card__actions">
 								<button type="button"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="location.href='performances'">公演一覧を表示する</button>
@@ -50,6 +101,7 @@
 				</div>
 			</div>
 			<div class="mdl-cell mdl-cell--2-col"></div>
+		</div>
 
 		<footer th:include="template :: fragment_footer"></footer>
 </body>

@@ -11,4 +11,5 @@ public interface PerformanceDetailMapper {
 	PerformanceId nextId();
 	void register(@Param("performance") Performance performance);
 	void modify(@Param("performanceModify") Performance performance);
+	void delete(@Param("performanceDelete") Performance performance);
 }

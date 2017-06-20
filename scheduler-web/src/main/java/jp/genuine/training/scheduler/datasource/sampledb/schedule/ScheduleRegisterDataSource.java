@@ -1,5 +1,6 @@
 package jp.genuine.training.scheduler.datasource.sampledb.schedule;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,12 @@ public class ScheduleRegisterDataSource implements ScheduleRegisterRepository{
 	@Override
 	public void register(Schedule schedule) {
 		scheduleRegisterMapper.register(schedule);
+	}
+
+	@Override
+	public List<Schedule> selectAll() {
+		List<Schedule> list = scheduleRegisterMapper.selectAll();
+		return list;
 	}
 
 

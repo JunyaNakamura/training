@@ -1,5 +1,7 @@
 package jp.genuine.training.scheduler.service.schedule;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +30,10 @@ public class ScheduleRegisterServiceImpl implements ScheduleRegisterService{
 		return performance;
 	}
 
+	@Override
+	public List<Schedule> selectAll() {
+		List<Schedule> list = scheduleRegisterRepository.selectAll();
+		return list;
+	}
 
 }

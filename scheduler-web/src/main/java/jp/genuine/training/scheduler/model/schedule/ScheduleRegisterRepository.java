@@ -1,5 +1,6 @@
 package jp.genuine.training.scheduler.model.schedule;
 
+import java.util.List;
 import java.util.Optional;
 
 import jp.genuine.training.scheduler.model.performance.Performance;
@@ -10,4 +11,5 @@ public interface ScheduleRegisterRepository {
 	public Optional<Performance>findBy( PerformanceId performanceId, User user );
 	public ScheduleId nextId();
 	public void register(Schedule schedule);
+	public List<Schedule> selectAll();
 }

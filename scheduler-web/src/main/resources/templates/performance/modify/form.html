@@ -12,11 +12,11 @@
 			<div class="mdl-card__wide mdl-card mdl-shadow--2dp">
 				<div class="mdl-card__title">
 					<h2>
-						<i class="fa fa-pencil" aria-hidden="true"></i> 公演場編集画面
+						<i class="fa fa-pencil" aria-hidden="true"></i> 公演情報編集画面
 					</h2>
 				</div>
 				<div>
-					<form th:action="@{/performance}" th:object="${performanceModify}" method="POST">
+					<form th:action="@{/performance/modify}" th:object="${performanceModify}" method="POST">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 						th:classappend="*{#fields.hasErrors('performanceName.value')}? is-invalid">
 							<label class="mdl-textfield__label">*公演名</label>

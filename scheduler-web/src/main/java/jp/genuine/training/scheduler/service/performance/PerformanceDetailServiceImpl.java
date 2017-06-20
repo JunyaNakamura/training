@@ -20,4 +20,9 @@ public class PerformanceDetailServiceImpl implements PerformanceDetailService{
 		return performance;
 	}
 
+	@Override
+	public void delete(Performance performance) {
+		performanceDetailRepository.delete(performance);
+	}
+
 }

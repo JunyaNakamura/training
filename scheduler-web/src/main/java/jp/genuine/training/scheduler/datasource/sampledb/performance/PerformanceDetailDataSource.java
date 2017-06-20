@@ -33,6 +33,10 @@ public class PerformanceDetailDataSource implements PerformanceDetailRepository{
 	public void modify(Performance performance) {
 		performanceDetailMapper.modify(performance);
 	}
+	@Override
+	public void delete(Performance performance) {
+		performanceDetailMapper.delete(performance);
+	}
 
 
 }

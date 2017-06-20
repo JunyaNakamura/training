@@ -2,10 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="jp.genuine.training.scheduler.datasource.sampledb.schedule.ScheduleRegisterMapper">
 
-
-
 	<resultMap type="jp.genuine.training.scheduler.model.schedule.ScheduleId" id="scheduleNextId">
 		<id column="nextval" property="value"/>
+	</resultMap>
+
+	<resultMap type="jp.genuine.training.scheduler.model.schedule.Schedule" id="allSchedule">
+		<id column="id" property="scheduleId.value"/>
+		<result column="name" property="performanceName.value"/>
+		<result column="fix_date" property="scheduledDate.value"/>
+		<result column="open_time" property="openTime.open"/>
+		<result column="start_time" property="startTime.start"/>
 	</resultMap>
 
 	<select id="nextId" resultMap="scheduleNextId" flushCache="true">
@@ -26,6 +32,21 @@
 			#{schedule.memo.value},
 			#{schedule.implessions.value});
 	</insert>
+
+	<select id="selectAll" resultMap="allSchedule" flushCache="true">
+		SELECT
+			schedule.information.id,
+			performance.information.name,
+			schedule.information.fix_date,
+			schedule.information.open_time,
+			schedule.information.start_time
+		FROM
+			schedule.information
+		INNER JOIN
+			performance.information
+		ON
+			performance.information.id = schedule.information.performance_id;
+	</select>
 
 
 </mapper>

@@ -5,11 +5,13 @@ import java.io.Serializable;
 import javax.validation.Valid;
 
 import jp.genuine.training.scheduler.model.performance.PerformanceId;
+import jp.genuine.training.scheduler.model.performance.PerformanceName;
 
 public class Schedule implements Serializable{
 
 
 	private PerformanceId performanceId;
+	private PerformanceName performanceName;
 	private ScheduleId scheduleId;
 	@Valid
 	private ScheduledDate scheduledDate;
@@ -25,9 +27,10 @@ public class Schedule implements Serializable{
 	private StartTime startTime;
 	private Implessions implessions;
 
-	public Schedule(ScheduleId scheduleId,PerformanceId performanceId){
+	public Schedule(ScheduleId scheduleId,PerformanceId performanceId, PerformanceName performanceName){
 		this.scheduleId=scheduleId;
 		this.performanceId=performanceId;
+		this.performanceName=performanceName;
 		scheduledDate = new ScheduledDate();
 		budget = new Budget();
 		ticketPrice = new TicketPrice();
@@ -40,6 +43,7 @@ public class Schedule implements Serializable{
 
 	public Schedule() {
 		performanceId = new PerformanceId();
+		performanceName = new PerformanceName();
 		scheduleId = new ScheduleId();
 		scheduledDate = new ScheduledDate();
 		budget = new Budget();
@@ -53,8 +57,9 @@ public class Schedule implements Serializable{
 
 	public Schedule(PerformanceId performanceId, ScheduleId scheduleId, ScheduledDate scheduledDate, Budget budget,
 			TicketPrice ticketPrice, Memo memo, TentativeSchedule tentativeSchedule, OpenTime openTime,
-			StartTime startTime, Implessions implessions) {
+			StartTime startTime, Implessions implessions, PerformanceName performanceName) {
 		this.performanceId = performanceId;
+		this.performanceName = performanceName;
 		this.scheduleId = scheduleId;
 		this.scheduledDate = scheduledDate;
 		this.budget = budget;
@@ -144,6 +149,14 @@ public class Schedule implements Serializable{
 
 	public void setImplessions(Implessions implessions) {
 		this.implessions = implessions;
+	}
+
+	public PerformanceName getPerformanceName() {
+		return performanceName;
+	}
+
+	public void setPerformanceName(PerformanceName performanceName) {
+		this.performanceName = performanceName;
 	}
 
 	@Override
