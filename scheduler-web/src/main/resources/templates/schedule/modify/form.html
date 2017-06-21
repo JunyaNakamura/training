@@ -14,50 +14,49 @@
 					<h2>
 						<i class="fa fa-pencil" aria-hidden="true"></i> スケジュール編集画面
 					</h2>
+					<p></p>
 				</div>
+				<div class="mdl-card__supporting-text">
+					<h3 th:text="${scheduleModify.performanceName.value}"></h3></div>
 				<div>
 					<form th:action="@{/schedule/modify}" th:object="${scheduleModify}" method="POST">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('performanceName.value')}? is-invalid">
-							<label class="mdl-textfield__label">*公演名</label>
-							<input type="text" th:field="*{performanceName.value}" class="mdl-textfield__input" disabled="disabled"/>
-							<span th:if="*{#fields.hasErrors('performanceName.value')}"
-								th:errors="*{performanceName.value}" class="mdl-textfield__error"></span>
-						</div>
-						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 						th:classappend="*{#fields.hasErrors('scheduledDate.value')}? is-invalid">
-							<label class="mdl-textfield__label">公演Url</label>
-							<input type="text" th:field="*{performanceUrl.value}" class="mdl-textfield__input" />
-							<span th:if="*{#fields.hasErrors('performanceUrl.value')}"
-								th:errors="*{performanceUrl.value}" class="mdl-textfield__error"></span>
+							<label>登録日</label>
+							<select  th:field="*{scheduledDate.value}">
+							<option value="2016-01-01"th:each="performanceDateRange : ${scheduleModify.performanceDate.performanceDateRange.days}"
+							th:text="${performanceDateRange}"th:value="${performanceDateRange}"></option>
+							</select>
+							<span th:if="*{#fields.hasErrors('scheduledDate.value')}"
+								th:errors="*{scheduledDate.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('venue.venueName.value')}? is-invalid">
-							<label class="mdl-textfield__label">会場名</label>
-							<input type="text" th:field="*{venue.venueName.value}" class="mdl-textfield__input" />
-							<span th:if="*{#fields.hasErrors('venue.venueName.value')}"
-								th:errors="*{venue.venueName.value}" class="mdl-textfield__error"></span>
+						th:classappend="*{#fields.hasErrors('openTime.open')}? is-invalid">
+							<label class="mdl-textfield__label">*開場時間</label>
+							<input type="time" th:field="*{openTime.open}" class="mdl-textfield__input"/>
+							<span th:if="*{#fields.hasErrors('openTime.open')}"
+								th:errors="*{openTime.open}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('venue.venueName.value')}? is-invalid">
-							<label class="mdl-textfield__label">会場URL</label>
-							<input type="text" th:field="*{venue.venueUrl.value}" class="mdl-textfield__input" />
-							<span th:if="*{#fields.hasErrors('venue.venueUrl.value')}"
-								th:errors="*{venue.venueUrl.value}" class="mdl-textfield__error"></span>
+						th:classappend="*{#fields.hasErrors('startTime.start')}? is-invalid">
+							<label class="mdl-textfield__label">*開園時間</label>
+							<input type="time" th:field="*{startTime.start}" class="mdl-textfield__input"/>
+							<span th:if="*{#fields.hasErrors('startTime.start')}"
+								th:errors="*{startTime.start}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('performanceDate.performanceDateRange.start')}? is-invalid">
-							<label class="mdl-textfield__label">公演開始日</label>
-							<input type="date" th:field="*{performanceDate.performanceDateRange.start}" class="mdl-textfield__input" />
-							<span th:if="*{#fields.hasErrors('performanceDate.performanceDateRange.start')}"
-								th:errors="*{performanceDate.performanceDateRange.start}" class="mdl-textfield__error"></span>
+						th:classappend="*{#fields.hasErrors('ticketPrice.value')}? is-invalid">
+							<label class="mdl-textfield__label">チケット代</label>
+							<input type="number" th:field="*{ticketPrice.value}" class="mdl-textfield__input"/>
+							<span th:if="*{#fields.hasErrors('ticketPrice.value')}"
+								th:errors="*{ticketPrice.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('performanceDate.performanceDateRange.end')}? is-invalid">
-							<label class="mdl-textfield__label">公演終了日</label>
-							<input type="date" th:field="*{performanceDate.performanceDateRange.end}" class="mdl-textfield__input" />
-							<span th:if="*{#fields.hasErrors('performanceDate.performanceDateRange.end')}"
-								th:errors="*{performanceDate.performanceDateRange.end}" class="mdl-textfield__error"></span>
+						th:classappend="*{#fields.hasErrors('budget.value')}? is-invalid">
+							<label class="mdl-textfield__label">物販費用</label>
+							<input type="number" th:field="*{budget.value}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('budget.value')}"
+								th:errors="*{budget.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 						th:classappend="*{#fields.hasErrors('memo.value')}? is-invalid">
@@ -65,6 +64,13 @@
 							<input type="text" th:field="*{memo.value}" class="mdl-textfield__input" />
 							<span th:if="*{#fields.hasErrors('memo.value')}"
 								th:errors="*{memo.value}" class="mdl-textfield__error"></span>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						th:classappend="*{#fields.hasErrors('implession.value')}? is-invalid">
+							<label class="mdl-textfield__label">感想</label>
+							<input type="text" th:field="*{implession.value}" class="mdl-textfield__input" />
+							<span th:if="*{#fields.hasErrors('implession.value')}"
+								th:errors="*{implession.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-card__actions">
 							<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">編集する</button>

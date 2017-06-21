@@ -31,8 +31,8 @@ public class ScheduleRegisterServiceImpl implements ScheduleRegisterService{
 	}
 
 	@Override
-	public List<Schedule> selectAll() {
-		List<Schedule> list = scheduleRegisterRepository.selectAll();
+	public List<Schedule> selectAll(LoginUser loginUser) {
+		List<Schedule> list = scheduleRegisterRepository.selectAll(loginUser.getUser());
 		return list;
 	}
 

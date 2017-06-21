@@ -36,6 +36,9 @@ public class StartTime implements Serializable{
 	}
 
 	public String getStart() {
+		return start;
+	}
+	public String getSubStart() {
 		return start.substring(0, 5);
 	}
 

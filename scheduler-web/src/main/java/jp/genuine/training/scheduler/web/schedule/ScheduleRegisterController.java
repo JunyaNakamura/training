@@ -33,7 +33,6 @@ public class ScheduleRegisterController {
 	@Autowired
 	private ScheduleRegisterService scheduleRegisterService;
 
-
 	@RequestMapping(value="/{performanceId}/register",method=RequestMethod.GET)
 	public String form(
 			@PathVariable("performanceId") Integer performanceId,
@@ -44,7 +43,8 @@ public class ScheduleRegisterController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		LoginUser loginUser = (LoginUser) authentication.getPrincipal();
 		Performance performance = scheduleRegisterService.findBy(new PerformanceId(performanceId),loginUser);
-		Schedule schedule = scheduleRegisterFactory.create(new PerformanceId(performanceId));
+		Schedule schedule = scheduleRegisterFactory.create(new PerformanceId(performanceId),loginUser.getUser().getUserId());
+
 		performanceModel.addAttribute("performanceSchedule",performance);
 		shceduleModel.addAttribute("schedule",schedule);
 

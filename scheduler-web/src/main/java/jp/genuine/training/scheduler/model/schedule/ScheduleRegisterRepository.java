@@ -11,5 +11,5 @@ public interface ScheduleRegisterRepository {
 	public Optional<Performance>findBy( PerformanceId performanceId, User user );
 	public ScheduleId nextId();
 	public void register(Schedule schedule);
-	public List<Schedule> selectAll();
+	public List<Schedule> selectAll(User user);
 }

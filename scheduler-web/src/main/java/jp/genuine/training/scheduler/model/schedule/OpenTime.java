@@ -20,6 +20,9 @@ public class OpenTime implements Serializable{
 	}
 
 	public String getOpen() {
+		return open;
+	}
+	public String getSubOpen() {
 		return open.substring(0, 5);
 	}
 

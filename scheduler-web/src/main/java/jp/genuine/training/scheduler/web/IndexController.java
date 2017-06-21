@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import jp.genuine.training.scheduler.model.calendar.Event;
 import jp.genuine.training.scheduler.model.schedule.Schedule;
+import jp.genuine.training.scheduler.model.user.LoginUser;
 import jp.genuine.training.scheduler.service.schedule.ScheduleRegisterService;
 
 @Controller
@@ -27,8 +30,11 @@ public class IndexController {
 
 	@RequestMapping(value="", method=RequestMethod.GET)
     public String show(Model model, HttpServletRequest request) throws JsonProcessingException{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+
 		// 全てのスケジュールを取得
-		List<Schedule> scheduleList = scheduleRegisterService.selectAll();
+		List<Schedule> scheduleList = scheduleRegisterService.selectAll(loginUser);
 		List<Event> eventList = new ArrayList<>();
 
 		// 取得したスケジュールをイベントオブジェクトに格納

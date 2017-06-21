@@ -3,11 +3,13 @@
 <mapper namespace="jp.genuine.training.scheduler.datasource.sampledb.schedule.ScheduleDetailMapper">
 
 	<resultMap type="jp.genuine.training.scheduler.model.schedule.Schedule" id="scheduleDetail">
-		<id column="schedule_id" property="scheduleId.value"/>
+		<id column="id" property="scheduleId.value"/>
 		<result column="performance_id" property="performanceId.value"/>
 		<result column="fix" property="scheduledDate.value"/>
 		<result column="name" property="performanceName.value"/>
 		<result column="fix_date" property="scheduledDate.value"/>
+		<result column="start_date" property="performanceDate.performanceDateRange.start"/>
+		<result column="end_date" property="performanceDate.performanceDateRange.end"/>
 		<result column="open_time" property="openTime.open"/>
 		<result column="start_time" property="startTime.start"/>
 		<result column="memo" property="memo.value"/>
@@ -20,6 +22,8 @@
 			pi.name,
 			si.performance_id,
 			si.fix_date,
+			pi.start_date,
+			pi.end_date,
 			si.open_time,
 			si.start_time,
 			si.ticket_price,
@@ -41,10 +45,10 @@
 			schedule.information
 		SET
 			fix_date = #{scheduleModify.scheduledDate.value},
-			open_time = #{scheduleModify.openTime.open},
-			start_time = #{scheduleModify.startTime.start},
-			ticket_price = #{scheduleModify.ticket_price.value},
-			budget = #{scheduleModify.budget.value},
+			open_time = CAST(#{scheduleModify.openTime.open} AS TIME),
+			start_time = CAST(#{scheduleModify.startTime.start} AS TIME),
+			ticket_price = #{scheduleModify.ticketPrice.integerValue},
+			budget = #{scheduleModify.budget.integerValue},
 			memo = #{scheduleModify.memo.value},
 			implession = #{scheduleModify.implession.value}
 		WHERE

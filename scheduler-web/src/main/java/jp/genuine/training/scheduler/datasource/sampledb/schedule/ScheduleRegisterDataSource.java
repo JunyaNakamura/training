@@ -37,8 +37,8 @@ public class ScheduleRegisterDataSource implements ScheduleRegisterRepository{
 	}
 
 	@Override
-	public List<Schedule> selectAll() {
-		List<Schedule> list = scheduleRegisterMapper.selectAll();
+	public List<Schedule> selectAll(User user) {
+		List<Schedule> list = scheduleRegisterMapper.selectAll(user);
 		return list;
 	}
 

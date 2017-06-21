@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 
+import jp.genuine.training.scheduler.model.schedule.OpenTime;
 import jp.genuine.training.scheduler.model.schedule.Schedule;
 import jp.genuine.training.scheduler.model.schedule.ScheduleId;
+import jp.genuine.training.scheduler.model.schedule.StartTime;
 import jp.genuine.training.scheduler.model.user.LoginUser;
 import jp.genuine.training.scheduler.service.schedule.ScheduleDetailService;
 
@@ -39,6 +41,15 @@ public class ScheduleModifyController {
 		LoginUser loginUser = (LoginUser) authentication.getPrincipal();
 
 		Schedule scheduleModify = scheduleDetailService.findBy(new ScheduleId(scheduleId),loginUser);
+
+		// 開場時間の整形
+		String openTime = scheduleModify.getOpenTime().getSubOpen();
+		scheduleModify.setOpenTime(new OpenTime(openTime));
+
+		// 開園時間の整形
+		String startTime = scheduleModify.getStartTime().getSubStart();
+		scheduleModify.setStartTime(new StartTime(startTime));
+
 		model.addAttribute("scheduleModify",scheduleModify);
 		return "/schedule/modify/form";
 	}

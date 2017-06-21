@@ -16,6 +16,4 @@ public class PerformanceRegisterServiceImpl implements PerformanceRegisterServic
 		performanceDetailRepository.register(performance);
 	}
 
-
-
 }

@@ -30,22 +30,24 @@
 			#{schedule.ticketPrice.integerValue},
 			#{schedule.budget.integerValue},
 			#{schedule.memo.value},
-			#{schedule.implessions.value});
+			#{schedule.implession.value});
 	</insert>
 
 	<select id="selectAll" resultMap="allSchedule" flushCache="true">
 		SELECT
-			schedule.information.id,
-			performance.information.name,
-			schedule.information.fix_date,
-			schedule.information.open_time,
-			schedule.information.start_time
+			si.id,
+			pi.name,
+			si.fix_date,
+			si.open_time,
+			si.start_time
 		FROM
-			schedule.information
+			schedule.information AS si
 		INNER JOIN
-			performance.information
+			performance.information AS pi
 		ON
-			performance.information.id = schedule.information.performance_id;
+			pi.id = si.performance_id
+		WHERE
+			pi.user_id = #{user.userId.value};
 	</select>
 
 

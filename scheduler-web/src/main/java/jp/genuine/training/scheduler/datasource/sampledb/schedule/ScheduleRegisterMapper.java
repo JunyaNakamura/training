@@ -14,5 +14,5 @@ public interface ScheduleRegisterMapper {
 	Performance findBy(@Param("performanceId") PerformanceId performanceId, @Param("user") User user);
 	ScheduleId nextId();
 	void register(@Param("schedule") Schedule schedule);
-	List<Schedule> selectAll();
+	List<Schedule> selectAll(@Param("user") User user);
 }

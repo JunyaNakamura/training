@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 import javax.validation.Valid;
 
+import jp.genuine.training.scheduler.model.performance.PerformanceDate;
 import jp.genuine.training.scheduler.model.performance.PerformanceId;
 import jp.genuine.training.scheduler.model.performance.PerformanceName;
 
 public class Schedule implements Serializable{
-
 
 	private PerformanceId performanceId;
 	private PerformanceName performanceName;
@@ -26,11 +26,12 @@ public class Schedule implements Serializable{
 	@Valid
 	private StartTime startTime;
 	private Implession implession;
+	private PerformanceDate performanceDate;
 
-	public Schedule(ScheduleId scheduleId,PerformanceId performanceId, PerformanceName performanceName){
-		this.scheduleId=scheduleId;
-		this.performanceId=performanceId;
-		this.performanceName=performanceName;
+	public Schedule(ScheduleId scheduleId,PerformanceId performanceId){
+		this.scheduleId = scheduleId;
+		this.performanceId = performanceId;
+		performanceName = new PerformanceName();
 		scheduledDate = new ScheduledDate();
 		budget = new Budget();
 		ticketPrice = new TicketPrice();
@@ -39,6 +40,7 @@ public class Schedule implements Serializable{
 		openTime = new OpenTime();
 		startTime = new StartTime();
 		implession = new Implession();
+		performanceDate = new PerformanceDate();
 	}
 
 	public Schedule() {
@@ -53,11 +55,12 @@ public class Schedule implements Serializable{
 		openTime = new OpenTime();
 		startTime = new StartTime();
 		implession = new Implession();
+		performanceDate = new PerformanceDate();
 	}
 
 	public Schedule(PerformanceId performanceId, ScheduleId scheduleId, ScheduledDate scheduledDate, Budget budget,
 			TicketPrice ticketPrice, Memo memo, TentativeSchedule tentativeSchedule, OpenTime openTime,
-			StartTime startTime, Implession implessions, PerformanceName performanceName) {
+			StartTime startTime, Implession implessions, PerformanceName performanceName, PerformanceDate performanceDate) {
 		this.performanceId = performanceId;
 		this.performanceName = performanceName;
 		this.scheduleId = scheduleId;
@@ -69,10 +72,15 @@ public class Schedule implements Serializable{
 		this.openTime = openTime;
 		this.startTime = startTime;
 		this.implession = implessions;
+		this.performanceDate = performanceDate;
 	}
 
 	public PerformanceId getPerformanceId() {
 		return performanceId;
+	}
+
+	public PerformanceName getPerformanceName() {
+		return performanceName;
 	}
 
 	public ScheduleId getScheduleId() {
@@ -111,8 +119,16 @@ public class Schedule implements Serializable{
 		return implession;
 	}
 
+	public PerformanceDate getPerformanceDate() {
+		return performanceDate;
+	}
+
 	public void setPerformanceId(PerformanceId performanceId) {
 		this.performanceId = performanceId;
+	}
+
+	public void setPerformanceName(PerformanceName performanceName) {
+		this.performanceName = performanceName;
 	}
 
 	public void setScheduleId(ScheduleId scheduleId) {
@@ -147,24 +163,20 @@ public class Schedule implements Serializable{
 		this.startTime = startTime;
 	}
 
-	public void setImplession(Implession implessions) {
-		this.implession = implessions;
+	public void setImplession(Implession implession) {
+		this.implession = implession;
 	}
 
-	public PerformanceName getPerformanceName() {
-		return performanceName;
-	}
-
-	public void setPerformanceName(PerformanceName performanceName) {
-		this.performanceName = performanceName;
+	public void setPerformanceDate(PerformanceDate performanceDate) {
+		this.performanceDate = performanceDate;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"Schedule [performanceId=%s, scheduleId=%s, scheduledDate=%s, budget=%s, ticketPrice=%s, memo=%s, tentativeSchedule=%s, openTime=%s, startTime=%s, implession=%s]",
+				"Schedule [performanceId=%s, scheduleId=%s, scheduledDate=%s, budget=%s, ticketPrice=%s, memo=%s, tentativeSchedule=%s, openTime=%s, startTime=%s, implession=%s,  performanceDate=%s]",
 				performanceId, scheduleId, scheduledDate, budget, ticketPrice, memo, tentativeSchedule, openTime,
-				startTime, implession);
+				startTime, implession, performanceDate);
 	}
 	private static final long serialVersionUID = -546319281156951601L;
 
