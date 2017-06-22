@@ -2,12 +2,15 @@ package jp.genuine.training.scheduler.model.performance;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class PerformanceName implements Serializable{
 	@NotEmpty
 	@Length(min=1,max=16)
+	@Pattern(regexp = "^[^\"#$%&'()*+,-./\\:;<=>?@^_`]*$", message = "記号は使用しないでください。")
 	private String value;
 
 	public PerformanceName() {

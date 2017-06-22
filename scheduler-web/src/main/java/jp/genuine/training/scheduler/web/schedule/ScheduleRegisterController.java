@@ -44,6 +44,7 @@ public class ScheduleRegisterController {
 		LoginUser loginUser = (LoginUser) authentication.getPrincipal();
 		Performance performance = scheduleRegisterService.findBy(new PerformanceId(performanceId),loginUser);
 		Schedule schedule = scheduleRegisterFactory.create(new PerformanceId(performanceId),loginUser.getUser().getUserId());
+		schedule.setPerformanceName(performance.getPerformanceName());
 
 		performanceModel.addAttribute("performanceSchedule",performance);
 		shceduleModel.addAttribute("schedule",schedule);

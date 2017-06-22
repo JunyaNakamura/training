@@ -52,11 +52,6 @@ public class ScheduleDetailController {
 			Model model,
 			HttpServletRequest httpServletRequest){
 
-		model.addAttribute("scheduleDetail",schedule);
-
-		if(bindingResult.hasErrors())
-			return "/schedule/detail";
-
 		scheduleDetailService.delete(schedule);
 
 		return "/schedule/delete/completed";

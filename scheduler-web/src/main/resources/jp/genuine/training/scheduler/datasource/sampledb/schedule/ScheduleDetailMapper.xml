@@ -59,7 +59,7 @@
 		DELETE FROM
 			schedule.information
 		WHERE
-			id = #{scheduleModify.scheduleId.value};
+			id = #{scheduleDelete.scheduleId.value};
 	</delete>
 
 </mapper>

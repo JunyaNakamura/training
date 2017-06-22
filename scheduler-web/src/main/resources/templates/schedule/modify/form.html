@@ -21,7 +21,7 @@
 				<div>
 					<form th:action="@{/schedule/modify}" th:object="${scheduleModify}" method="POST">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('scheduledDate.value')}? is-invalid">
+							th:classappend="*{#fields.hasErrors('scheduledDate.value')}? is-invalid">
 							<label>登録日</label>
 							<select  th:field="*{scheduledDate.value}">
 							<option value="2016-01-01"th:each="performanceDateRange : ${scheduleModify.performanceDate.performanceDateRange.days}"
@@ -31,42 +31,42 @@
 								th:errors="*{scheduledDate.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('openTime.open')}? is-invalid">
+							th:classappend="*{#fields.hasErrors('openTime.open')}? is-invalid">
 							<label class="mdl-textfield__label">*開場時間</label>
 							<input type="time" th:field="*{openTime.open}" class="mdl-textfield__input"/>
 							<span th:if="*{#fields.hasErrors('openTime.open')}"
 								th:errors="*{openTime.open}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('startTime.start')}? is-invalid">
+							th:classappend="*{#fields.hasErrors('startTime.start')}? is-invalid">
 							<label class="mdl-textfield__label">*開園時間</label>
 							<input type="time" th:field="*{startTime.start}" class="mdl-textfield__input"/>
 							<span th:if="*{#fields.hasErrors('startTime.start')}"
 								th:errors="*{startTime.start}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('ticketPrice.value')}? is-invalid">
+							th:classappend="*{#fields.hasErrors('ticketPrice.value')}? is-invalid">
 							<label class="mdl-textfield__label">チケット代</label>
 							<input type="number" th:field="*{ticketPrice.value}" class="mdl-textfield__input"/>
 							<span th:if="*{#fields.hasErrors('ticketPrice.value')}"
 								th:errors="*{ticketPrice.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('budget.value')}? is-invalid">
+							th:classappend="*{#fields.hasErrors('budget.value')}? is-invalid">
 							<label class="mdl-textfield__label">物販費用</label>
 							<input type="number" th:field="*{budget.value}" class="mdl-textfield__input" />
 							<span th:if="*{#fields.hasErrors('budget.value')}"
 								th:errors="*{budget.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('memo.value')}? is-invalid">
+							th:classappend="*{#fields.hasErrors('memo.value')}? is-invalid">
 							<label class="mdl-textfield__label">メモ</label>
 							<input type="text" th:field="*{memo.value}" class="mdl-textfield__input" />
 							<span th:if="*{#fields.hasErrors('memo.value')}"
 								th:errors="*{memo.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('implession.value')}? is-invalid">
+							th:classappend="*{#fields.hasErrors('implession.value')}? is-invalid">
 							<label class="mdl-textfield__label">感想</label>
 							<input type="text" th:field="*{implession.value}" class="mdl-textfield__input" />
 							<span th:if="*{#fields.hasErrors('implession.value')}"

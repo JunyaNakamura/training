@@ -15,6 +15,9 @@
 						<i class="fa fa-pencil" aria-hidden="true"></i> スケジュール登録画面
 					</h2>
 				</div>
+				<div class="mdl-card__supporting-text">
+					<h3 th:text="${schedule.performanceName.value}"></h3>
+				</div>
 				<div>
 					<form th:action="@{/schedule}" th:object="${schedule}"method="POST">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"

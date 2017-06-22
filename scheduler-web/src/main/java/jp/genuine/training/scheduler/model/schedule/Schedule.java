@@ -11,6 +11,7 @@ import jp.genuine.training.scheduler.model.performance.PerformanceName;
 public class Schedule implements Serializable{
 
 	private PerformanceId performanceId;
+	@Valid
 	private PerformanceName performanceName;
 	private ScheduleId scheduleId;
 	@Valid
