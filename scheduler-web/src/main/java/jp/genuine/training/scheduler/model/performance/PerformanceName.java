@@ -9,8 +9,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class PerformanceName implements Serializable{
 	@NotEmpty
-	@Length(min=1,max=16)
-	@Pattern(regexp = "^[^\"#$%&'()*+,-./\\:;<=>?@^_`]*$", message = "記号は使用しないでください。")
+	@Length(min=1,max=20)
+	@Pattern(regexp = "^[^\"#$%&'()*+,-./\\:;<=>?@^_`]*$", message = "半角記号は使用しないでください。")
 	private String value;
 
 	public PerformanceName() {

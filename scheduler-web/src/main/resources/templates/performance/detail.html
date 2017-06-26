@@ -18,57 +18,57 @@
 						</form>
 					</div>
 					<form th:action="@{/performance/detail/delete}" th:object="${performanceDetail}" method="POST">
-					<div class="mdl-grid">
-					<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--3dp">
-					<tr>
-						<th>公演名</th>
-						<td th:text="${performanceDetail.performanceName.value}"></td>
-					</tr>
-					<tr>
-						<th>サイトURL</th>
-						<td th:text="${performanceDetail.performanceUrl.value}"></td>
-					</tr>
-					<tr>
-						<th>会場名</th>
-						<td th:text="${performanceDetail.venue.venueName.value}"></td>
-					</tr>
-					<tr>
-						<th>会場URL</th>
-						<td th:text="${performanceDetail.venue.venueUrl.value}"></td>
-					</tr>
-					<tr>
-						<th>公演開始日</th>
-						<td th:text="${performanceDetail.performanceDate.performanceDateRange.start}"></td>
-					</tr>
-					<tr>
-						<th>公演終了日</th>
-						<td th:text="${performanceDetail.performanceDate.performanceDateRange.end}"></td>
-					</tr>
-					<tr th:each="suspendDateList : ${performanceDetail.performanceDate.suspendDateList.list}">
-						<th>休演日</th>
-						<td th:text="${suspendDateList}"></td>
-					</tr>
-					<tr>
-						<th>メモ</th>
-						<td th:text="${performanceDetail.memo.value}"></td>
-					</tr>
-					</table>
-					</div>
-					<div class="mdl-card__actions">
-						<a th:href="@{/schedule/{orderId}/register/(orderId=${performanceDetail.performanceId.value})}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">スケジュールを登録する</a>
-					</div>
-					<div class="mdl-card__actions">
-						<a th:href="@{/performance/modify/{orderId}/(orderId=${performanceDetail.performanceId.value})}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">公演内容を編集する</a>
-					</div>
-					<div class="mdl-card__actions">
-							<button id="delete" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">削除する</button>
+						<div class="mdl-grid">
+							<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--3dp">
+								<tr>
+									<th>公演名</th>
+									<td th:text="${performanceDetail.performanceName.value}"></td>
+								</tr>
+								<tr>
+									<th>サイトURL</th>
+									<td th:text="${performanceDetail.performanceUrl.value}"></td>
+								</tr>
+								<tr>
+									<th>会場名</th>
+									<td th:text="${performanceDetail.venue.venueName.value}"></td>
+								</tr>
+								<tr>
+									<th>会場URL</th>
+									<td th:text="${performanceDetail.venue.venueUrl.value}"></td>
+								</tr>
+								<tr>
+									<th>公演開始日</th>
+									<td th:text="${performanceDetail.performanceDate.performanceDateRange.start}"></td>
+								</tr>
+								<tr>
+									<th>公演終了日</th>
+									<td th:text="${performanceDetail.performanceDate.performanceDateRange.end}"></td>
+								</tr>
+								<tr th:each="suspendDateList : ${performanceDetail.performanceDate.suspendDateList.list}">
+									<th>休演日</th>
+									<td th:text="${suspendDateList}"></td>
+								</tr>
+								<tr>
+									<th>メモ</th>
+									<td th:text="${performanceDetail.memo.value}"></td>
+								</tr>
+							</table>
 						</div>
-					<div class="mdl-card__actions">
-						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onClick="history.back()">戻る</button>
-					</div>
-					<div class="mdl-card__actions mdl-card--border">
-						<a th:href="@{/index}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">トップへ</a>
-					</div>
+						<div class="mdl-card__actions">
+							<a th:href="@{/schedule/{orderId}/register/(orderId=${performanceDetail.performanceId.value})}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">スケジュールを登録する</a>
+						</div>
+						<div class="mdl-card__actions">
+							<a th:href="@{/performance/modify/{orderId}/(orderId=${performanceDetail.performanceId.value})}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">公演内容を編集する</a>
+						</div>
+						<div class="mdl-card__actions">
+								<button id="delete" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">削除する</button>
+							</div>
+						<div class="mdl-card__actions">
+							<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onClick="history.back()">戻る</button>
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							<a th:href="@{/index}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">トップへ</a>
+						</div>
 					</form>
 				</div>
 			</div>

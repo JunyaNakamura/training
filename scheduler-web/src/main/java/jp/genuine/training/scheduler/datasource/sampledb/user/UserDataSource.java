@@ -19,4 +19,9 @@ public class UserDataSource implements UserRepository{
 		return Optional.ofNullable(user);
 	}
 
+	@Override
+	public void register(User user) {
+		mapper.register(user);
+	}
+
 }

@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					"/errors/**",
 					"/login",
 					"/logout",
+					"/account/register",
 					"/healthcheck").permitAll()
 			.anyRequest().hasAnyRole("USER","ADMIN");
 

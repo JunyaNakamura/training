@@ -1,6 +1,10 @@
 package jp.genuine.training.scheduler.model.user;
 
+import org.hibernate.validator.constraints.Length;
+
 public class Name {
+
+	@Length(min = 1, max = 20)
 	private String value;
 
 	public Name() {

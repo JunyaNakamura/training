@@ -1,8 +1,13 @@
 package jp.genuine.training.scheduler.model.user;
 
+import javax.validation.Valid;
+
 public class User {
+	@Valid
 	private UserId userId;
+	@Valid
 	private Name name;
+	@Valid
 	private Password password;
 
 	public User() {

@@ -7,4 +7,5 @@ import jp.genuine.training.scheduler.model.user.UserId;
 
 public interface UserMapper {
 	User findBy(@Param("userId") UserId userId);
+	public void register(@Param("userRegister") User user);
 }

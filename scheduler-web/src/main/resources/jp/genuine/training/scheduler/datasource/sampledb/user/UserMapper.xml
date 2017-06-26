@@ -19,4 +19,11 @@
 			"user".id = #{userId.value};
 	</select>
 
+	<insert id="register" flushCache="true">
+		INSERT INTO
+			account."user"(
+			id, password, name)
+		 VALUES (#{userRegister.userId.value}, #{userRegister.password.value}, #{userRegister.name.value});
+	</insert>
+
 </mapper>
