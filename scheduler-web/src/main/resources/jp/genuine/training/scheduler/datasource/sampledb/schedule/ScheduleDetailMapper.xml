@@ -12,6 +12,8 @@
 		<result column="end_date" property="performanceDate.performanceDateRange.end"/>
 		<result column="open_time" property="openTime.open"/>
 		<result column="start_time" property="startTime.start"/>
+		<result column="ticket_price" property="ticketPrice.value"/>
+		<result column="budget" property="budget.value"/>
 		<result column="memo" property="memo.value"/>
 		<result column="implession" property="implession.value"/>
 	</resultMap>

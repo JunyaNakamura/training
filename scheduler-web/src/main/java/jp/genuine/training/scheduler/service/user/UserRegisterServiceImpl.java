@@ -22,6 +22,7 @@ public class UserRegisterServiceImpl implements UserRegisterService{
 
 	@Override
 	public boolean isUnusedUserId(String userId) {
+
 		Optional<User> usedUser = repository.findBy(new UserId(userId));
 
 		// UserIDが取得できない場合

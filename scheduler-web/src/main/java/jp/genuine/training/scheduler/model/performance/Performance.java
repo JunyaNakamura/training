@@ -7,7 +7,6 @@ import javax.validation.Valid;
 import jp.genuine.training.scheduler.model.user.UserId;
 
 public class Performance implements Serializable{
-	@Valid
 	private UserId userId;
 	@Valid
 	private PerformanceName performanceName;
