@@ -31,15 +31,15 @@
 								th:errors="*{scheduledDate.value}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('openTime.valid')}? is-invalid">
-							<label class="mdl-textfield__label">　　*開場時間</label>
+							th:classappend="*{#fields.hasErrors('openTime.valid')}? is-invalid">
+							<label class="mdl-textfield__label">*開場時間</label>
 							<input type="time" value="00:00"th:field="*{openTime.open}" class="mdl-textfield__input" />
 							<span th:if="*{#fields.hasErrors('openTime.valid')}"
 								th:errors="*{openTime.valid}" class="mdl-textfield__error"></span>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-						th:classappend="*{#fields.hasErrors('startTime.valid')}? is-invalid">
-							<label class="mdl-textfield__label">　　*開演時間</label>
+							th:classappend="*{#fields.hasErrors('startTime.valid')}? is-invalid">
+							<label class="mdl-textfield__label">*開演時間</label>
 							<input type="time" value="00:00" th:field="*{startTime.start}" class="mdl-textfield__input" />
 							<span th:if="*{#fields.hasErrors('startTime.valid')}"
 								th:errors="*{startTime.valid}" class="mdl-textfield__error"></span>
