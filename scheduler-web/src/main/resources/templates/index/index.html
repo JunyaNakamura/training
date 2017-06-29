@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:include="template :: fragment_html_head(title='トップページ')">
 </head>
 <body>
 	<script th:inline="javascript">
-        $(document).ready(function () {
-        	var today = new Date();
+		$(document).ready(function () {
+			setCsrfTokenToAjaxHeader();
+
+			var today = new Date();
+			var events;
+
+			// Ajax通信テスト ボタンクリック
+			$("#selectCalendar").change(function() {
+				// 選択されたカレンダー種別を取得
+				var calendarType = $(this).val();
+				$.ajax({
+					type: "GET",
+					url: "index/" + calendarType,
+					success: function(data) {
+						$('#calendar').fullCalendar('removeEvents');
+						$('#calendar').fullCalendar('renderEvents', data);
+						},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+								alert(XMLHttpRequest, textStatus, errorThrown);
+						}
+				});
+			});
+
 
             $('#calendar').fullCalendar({
             	header: {
@@ -19,40 +40,58 @@
     			defaultDate: today,
     			editable: false,
     			eventLimit: true,
-    			events:  /*[[${performanceIndex}]]*/,
-    			eventClick: function(calEvent, jsEvent, view) {
-    			    location.href = 'schedule/detail/' + calEvent.id;
-    			}
+    			events:  /*[[${performanceIndex}]]*/
     		});
-        });
+
+			// Spring SecurityのCSRF対策によるトークンをajax通信で受け渡しできるようにします。
+			function setCsrfTokenToAjaxHeader() {
+				var token = $("meta[name='_csrf']").attr("content");
+				var header = $("meta[name='_csrf_header']").attr("content");
+				$(document).ajaxSend(function(e, xhr, options) {
+					xhr.setRequestHeader(header, token);
+				});
+			}
+		});
 	</script>
 
 	<header th:include="template :: fragment_header(title='Scheduler')"></header>
-		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--2-col"></div>
-			<div class="mdl-cell mdl-cell--8-col">
-				<div class="mdl-card__wide mdl-card mdl-shadow--2dp">
-					<div class="mdl-card__title">
-						<h2><i class="fa fa-map-o" aria-hidden="true"></i> トップメニュー</h2>
-					</div>
-			<!-- カレンダー -->
-			<div id="calendar"class="mdl-shadow--3dp"></div>
-						<form name="top">
-							<div class="mdl-card__actions">
-								<button type="button"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="location.href='performances'">公演一覧を表示する</button>
-							</div>
-							<div class="mdl-card__actions">
-								<button type="button"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="location.href='performance/register'">公演概要を登録する</button>
-							</div>
-							<div class="mdl-card__actions">
-								<button type="button"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="location.href='logout'">ログアウトする</button>
-							</div>
-						</form>
-					</div>
+	<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--2-col"></div>
+		<div class="mdl-cell mdl-cell--8-col">
+			<div class="mdl-card__wide mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title">
+					<h2>
+						<i class="fa fa-map-o" aria-hidden="true"></i> トップメニュー
+					</h2>
 				</div>
+				<select id="selectCalendar">
+					<option value="1">スケジュールカレンダー</option>
+					<option value="2">公演カレンダー</option>
+				</select>
+				<!-- カレンダー -->
+				<div id="calendar" class="mdl-shadow--3dp"></div>
+				<form name="top">
+					<div class="mdl-card__actions">
+						<button type="button"
+							class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+							onclick="location.href='performances'">公演一覧を表示する</button>
+					</div>
+					<div class="mdl-card__actions">
+						<button type="button"
+							class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+							onclick="location.href='performance/register'">公演概要を登録する</button>
+					</div>
+					<div class="mdl-card__actions">
+						<button type="button"
+							class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+							onclick="location.href='logout'">ログアウトする</button>
+					</div>
+				</form>
 			</div>
-			<div class="mdl-cell mdl-cell--2-col"></div>
+		</div>
+	</div>
+	<div class="mdl-cell mdl-cell--2-col"></div>
 
-		<footer th:include="template :: fragment_footer"></footer>
+	<footer th:include="template :: fragment_footer"></footer>
 </body>
 </html>

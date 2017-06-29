@@ -12,6 +12,8 @@ public class Event implements Serializable{
 	private String start;
 	/** 開始日時 */
 	private String end;
+	/** URL */
+	private String url;
 
 	/**
 	 * コンストラクタ
@@ -21,11 +23,13 @@ public class Event implements Serializable{
 		title = "";
 		start = "";
 		end = "";
+		url="";
 	}
-	public Event(String id, String title, String start, String end) {
+	public Event(String id, String title, String start, String end, String url) {
 		this.title = title;
 		this.start = start;
 		this.end = end;
+		this.url = url;
 	}
 
 	// 以下getter/setter
@@ -41,6 +45,9 @@ public class Event implements Serializable{
 	public String getEnd() {
 		return end;
 	}
+	public String getUrl() {
+		return url;
+	}
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -53,7 +60,9 @@ public class Event implements Serializable{
 	public void setEnd(String end) {
 		this.end = end;
 	}
-
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	@Override
 	public String toString() {
 		return String.format(
