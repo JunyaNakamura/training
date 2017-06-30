@@ -39,7 +39,9 @@
 		ON
 			pi.id = si.performance_id
 		WHERE
-			si.id = #{scheduleId.value};
+			si.id = #{scheduleId.value}
+		AND
+			si.delete_flg = '0';
 	</select>
 
 	<update id="modify" flushCache="true">
@@ -57,11 +59,13 @@
 			id = #{scheduleModify.scheduleId.value};
 	</update>
 
-	<delete id="delete" flushCache="true">
-		DELETE FROM
+	<update id="delete" flushCache="true">
+		UPDATE
 			schedule.information
+		SET
+			delete_flg = '1'
 		WHERE
 			id = #{scheduleDelete.scheduleId.value};
-	</delete>
+	</update>
 
 </mapper>

@@ -37,6 +37,8 @@
 			information.user_id = #{user.userId.value}
 		AND
 			information.id = #{performanceId.value}
+		AND
+			information.delete_flg = '0'
 		ORDER BY
 			suspend.suspend_date,suspend.id;
 	</select>
@@ -52,7 +54,7 @@
 
 	<insert id="register" flushCache="true">
 		INSERT INTO
-			performance.information (id,user_id,name,site_url,place,place_url,start_date,end_date,memo)
+			performance.information (id,user_id,name,site_url,place,place_url,start_date,end_date,memo,delete_flg)
 		VALUES
 			(#{performance.performanceId.value},
 			#{performance.userId.value},
@@ -62,7 +64,8 @@
 			#{performance.venue.venueUrl.value},
 			#{performance.performanceDate.performanceDateRange.start},
 			#{performance.performanceDate.performanceDateRange.end},
-			#{performance.memo.value});
+			#{performance.memo.value},
+			'0');
 	</insert>
 
 	<update id="modify" flushCache="true">
@@ -81,12 +84,16 @@
 	</update>
 
 	<delete id="delete" flushCache="true">
-		DELETE FROM
+		UPDATE
 			schedule.information
+		SET
+			delete_flg = '1'
 		WHERE
 			performance_id = #{performanceDelete.performanceId.value};
-		DELETE FROM
+		UPDATE
 			performance.information
+		SET
+			delete_flg = '1'
 		WHERE
 			id = #{performanceDelete.performanceId.value};
 	</delete>

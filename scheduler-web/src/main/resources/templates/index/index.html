@@ -9,7 +9,7 @@
 			setCsrfTokenToAjaxHeader();
 
 			var today = new Date();
-			var events;
+			var events = /*[[${performanceIndex}]]*/;
 
 			// Ajax通信テスト ボタンクリック
 			$("#selectCalendar").change(function() {
@@ -19,8 +19,10 @@
 					type: "GET",
 					url: "index/" + calendarType,
 					success: function(data) {
-						$('#calendar').fullCalendar('removeEvents');
-						$('#calendar').fullCalendar('renderEvents', data);
+							events = data
+							$('#calendar').fullCalendar('removeEvents');
+		    		        $('#calendar').fullCalendar('addEventSource', events);
+		    		        $('#calendar').fullCalendar('rerenderEvents');
 						},
 					error: function(XMLHttpRequest, textStatus, errorThrown) {
 								alert(XMLHttpRequest, textStatus, errorThrown);
@@ -33,15 +35,16 @@
             	header: {
     				left: 'prev,next today',
     				center: 'title',
-    				right: 'nothing',
     				right: 'month,basicWeek,basicDay'
     			},
     			timeFormat: 'H:mm',
     			defaultDate: today,
     			editable: false,
-    			eventLimit: true,
-    			events:  /*[[${performanceIndex}]]*/
+    			eventLimit: false,
+    			events:  events
     		});
+
+            console.log(events);
 
 			// Spring SecurityのCSRF対策によるトークンをajax通信で受け渡しできるようにします。
 			function setCsrfTokenToAjaxHeader() {
@@ -52,6 +55,8 @@
 				});
 			}
 		});
+
+
 	</script>
 
 	<header th:include="template :: fragment_header(title='Scheduler')"></header>

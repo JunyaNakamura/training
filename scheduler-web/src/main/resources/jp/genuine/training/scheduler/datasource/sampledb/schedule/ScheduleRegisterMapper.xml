@@ -20,7 +20,7 @@
 	</select>
 	<insert id="register" flushCache="true">
 		INSERT INTO
-			schedule.information (id,performance_id,fix_date,open_time,start_time,ticket_price,budget,memo,implession)
+			schedule.information (id,performance_id,fix_date,open_time,start_time,ticket_price,budget,memo,implession,delete_flg)
 		VALUES
 			(#{schedule.scheduleId.value},
 			#{schedule.performanceId.value},
@@ -30,7 +30,8 @@
 			#{schedule.ticketPrice.integerValue},
 			#{schedule.budget.integerValue},
 			#{schedule.memo.value},
-			#{schedule.implession.value});
+			#{schedule.implession.value},
+			'0');
 	</insert>
 
 	<select id="selectAll" resultMap="allSchedule" flushCache="true">
@@ -47,7 +48,9 @@
 		ON
 			pi.id = si.performance_id
 		WHERE
-			pi.user_id = #{user.userId.value};
+			pi.user_id = #{user.userId.value}
+		AND
+			si.delete_flg = '0';
 	</select>
 
 

@@ -19,6 +19,8 @@
 			performance.information
 		WHERE
 			information.user_id = #{user.userId.value}
+		AND
+			information.delete_flg = '0'
 		ORDER BY start_date,end_date,information.id;
 	</select>
 
