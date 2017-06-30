@@ -6,10 +6,25 @@
 <body>
 	<script th:inline="javascript">
 		$(document).ready(function () {
+			// CSRFトークンを送信
 			setCsrfTokenToAjaxHeader();
 
 			var today = new Date();
 			var events = /*[[${performanceIndex}]]*/;
+
+
+            $('#calendar').fullCalendar({
+            	header: {
+    				left: 'prev,next today',
+    				center: 'title',
+    				right: 'month,basicWeek,basicDay'
+    			},
+    			timeFormat: 'H:mm',
+    			defaultDate: today,
+    			editable: false,
+    			eventLimit: false,
+    			events:  events
+    		});
 
 			// Ajax通信テスト ボタンクリック
 			$("#selectCalendar").change(function() {
@@ -30,22 +45,6 @@
 				});
 			});
 
-
-            $('#calendar').fullCalendar({
-            	header: {
-    				left: 'prev,next today',
-    				center: 'title',
-    				right: 'month,basicWeek,basicDay'
-    			},
-    			timeFormat: 'H:mm',
-    			defaultDate: today,
-    			editable: false,
-    			eventLimit: false,
-    			events:  events
-    		});
-
-            console.log(events);
-
 			// Spring SecurityのCSRF対策によるトークンをajax通信で受け渡しできるようにします。
 			function setCsrfTokenToAjaxHeader() {
 				var token = $("meta[name='_csrf']").attr("content");
@@ -55,8 +54,6 @@
 				});
 			}
 		});
-
-
 	</script>
 
 	<header th:include="template :: fragment_header(title='Scheduler')"></header>
